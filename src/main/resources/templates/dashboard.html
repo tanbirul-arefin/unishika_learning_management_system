@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#071327">
+	<meta name="description" content="Your UniShikha learning dashboard.">
+	<title>Student Dashboard | UniShikha</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" th:href="@{/css/dashboard.css}">
+</head>
+<body>
+	<div class="dashboard-shell">
+		<aside class="sidebar" id="sidebar">
+			<a class="brand" th:href="@{/}" aria-label="UniShikha home">
+				<svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+					<path d="M4 15 24 5l20 10-20 10L4 15Z" fill="currentColor"/>
+					<path d="M12 20v11c7 7 17 7 24 0V20l-12 6-12-6Z" fill="currentColor" opacity=".78"/>
+					<path d="M43 17v13" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+					<circle cx="43" cy="33" r="2.5" fill="currentColor"/>
+				</svg>
+				<span>Uni<span>Shikha</span><small>Learn · Build · Grow</small></span>
+			</a>
+
+			<nav class="side-nav" aria-label="Student navigation">
+				<a class="side-link active" href="#dashboard"><span aria-hidden="true">⌂</span>Dashboard</a>
+				<a class="side-link" th:href="@{/mycourses}"><span aria-hidden="true">▤</span>My Courses</a>
+				<a class="side-link" href="#recommended"><span aria-hidden="true">◎</span>Explore</a>
+				<a class="side-link" href="#live-classes"><span aria-hidden="true">▷</span>Live Classes</a>
+				<a class="side-link" href="#weekly-goal"><span aria-hidden="true">▧</span>Assignments</a>
+				<a class="side-link" href="#quick-practice"><span aria-hidden="true">☑</span>Quizzes</a>
+				<a class="side-link" href="#weekly-goal"><span aria-hidden="true">◇</span>Projects</a>
+				<a class="side-link" href="#learning-buddy"><span aria-hidden="true">♧</span>Community</a>
+				<a class="side-link" href="#achievements"><span aria-hidden="true">♢</span>Certificates</a>
+				<a class="side-link" href="#continue"><span aria-hidden="true">▤</span>Notes</a>
+				<a class="side-link" href="#live-classes"><span aria-hidden="true">▦</span>Calendar</a>
+				<a class="side-link" href="#learning-buddy"><span aria-hidden="true">▱</span>Messages</a>
+			</nav>
+
+			<div class="sidebar-footer">
+				<div class="sidebar-footer-glow"></div>
+				<a class="side-link logout-link" th:href="@{/login}"><span aria-hidden="true">↪</span>Log out</a>
+			</div>
+		</aside>
+
+		<main class="main-column" id="dashboard">
+			<header class="topbar">
+				<button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="sidebar" aria-expanded="false">
+					<span></span><span></span><span></span>
+				</button>
+				<label class="search-box">
+					<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16 16 4 4"></path></svg>
+					<input type="search" placeholder="Search for courses, topics, instructors..." aria-label="Search courses, topics, and instructors">
+					<kbd>Ctrl K</kbd>
+				</label>
+				<div class="topbar-actions">
+					<button class="icon-button" type="button" aria-label="Toggle color theme">☼</button>
+					<button class="icon-button notification-button" type="button" aria-label="Notifications">♧<i></i></button>
+					<a class="profile" th:href="@{/login}" aria-label="Tanvir Ahmed, student profile">
+						<img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&amp;fit=crop&amp;w=96&amp;q=80" alt="">
+						<span><strong>Tanvir Ahmed</strong><small>Student</small></span>
+						<span class="profile-chevron" aria-hidden="true">⌄</span>
+					</a>
+				</div>
+			</header>
+
+			<section class="welcome-hero" aria-labelledby="welcome-title">
+				<div class="hero-copy">
+					<p class="hero-kicker">YOUR LEARNING SPACE</p>
+					<h1 id="welcome-title">Good Evening,<br>Tanvir! <span aria-hidden="true">👋</span></h1>
+					<p class="hero-quote">“A little progress each day<br>adds up to big results.”</p>
+					<a class="primary-button" href="#continue"><span aria-hidden="true">▶</span> Continue Learning</a>
+				</div>
+				<p class="hero-mantra">Better<br>Students<br>Build Brighter<br>Tomorrows</p>
+				<div class="hero-shade"></div>
+			</section>
+
+			<div class="content-panel">
+				<section class="stats-grid" aria-label="Learning overview">
+					<article class="stat-card">
+						<span class="stat-icon blue" aria-hidden="true">▣</span>
+						<strong>5</strong><span>Enrolled Courses</span><a href="#continue" aria-label="View enrolled courses">→</a>
+					</article>
+					<article class="stat-card" id="live-classes">
+						<span class="stat-icon violet" aria-hidden="true">▣</span>
+						<strong>24</strong><span>Live Classes</span><a href="#live-classes" aria-label="View live classes">→</a>
+					</article>
+					<article class="stat-card">
+						<span class="stat-icon green" aria-hidden="true">✓</span>
+						<strong>68%</strong><span>Overall Progress</span><a href="#weekly-goal" aria-label="View learning progress">→</a>
+					</article>
+					<article class="stat-card">
+						<span class="stat-icon orange" aria-hidden="true">♜</span>
+						<strong>3</strong><span>Certificates Earned</span><a href="#achievements" aria-label="View certificates">→</a>
+					</article>
+				</section>
+
+				<div class="learning-grid">
+					<section class="section-card continue-card" id="continue">
+						<div class="section-heading">
+							<h2>Continue Learning</h2>
+							<a href="#recommended">View Course <span aria-hidden="true">→</span></a>
+						</div>
+						<article class="course-progress">
+							<div class="python-art">
+								<span class="progress-label">In Progress</span>
+								<span class="python-symbol" aria-hidden="true">🐍</span>
+								<strong>Python<br>for Beginners</strong>
+								<span class="play-button" aria-hidden="true">▶</span>
+							</div>
+							<div class="course-details">
+								<div class="course-title-row"><div><h3>Python for Beginners</h3><p>by Md. Mahadi Hasan</p></div><strong>68%</strong></div>
+								<div class="progress-track" role="progressbar" aria-label="Python for Beginners course progress" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100"><span style="width: 68%"></span></div>
+								<div class="course-meta"><span>☑ 24/36 lessons</span><span>◷ 8h 20m left</span></div>
+								<p class="last-watched">▧ Last watched: Variables and Data Types</p>
+								<a class="primary-button resume-button" href="#recommended"><span aria-hidden="true">▶</span> Resume Learning</a>
+							</div>
+							<button class="bookmark-button" type="button" aria-label="Save Python for Beginners">♧</button>
+						</article>
+					</section>
+
+					<section class="section-card practice-card" id="quick-practice">
+						<div class="section-heading">
+							<div><h2>Quick Practice</h2><p>5-minute skill boosters</p></div>
+							<a class="round-arrow" href="#recommended" aria-label="Explore practice activities">›</a>
+						</div>
+						<a class="practice-link practice-blue" href="#recommended"><span>‹›</span>Python Quiz <b>›</b></a>
+						<a class="practice-link practice-purple" href="#recommended"><span>⚛</span>React Challenge <b>›</b></a>
+						<a class="practice-link practice-pink" href="#recommended"><span>✿</span>UI/UX Task <b>›</b></a>
+					</section>
+				</div>
+
+				<section class="recommended-section" id="recommended">
+					<div class="section-heading">
+						<h2>Recommended for You</h2>
+						<a href="#recommended">View All <span aria-hidden="true">→</span></a>
+					</div>
+					<div class="recommended-grid">
+						<article class="recommended-course">
+							<div class="course-cover cover-react"><span>⚛</span></div>
+							<h3>Web Development<br>with React</h3>
+							<div class="recommend-meta"><span>⭐ 4.8 <small>(2.1K)</small></span><span>▣ 8 Weeks</span></div>
+							<button type="button" aria-label="Save Web Development with React">♧</button>
+						</article>
+						<article class="recommended-course">
+							<div class="course-cover cover-design"><span>✿</span></div>
+							<h3>UI/UX Design<br>for Beginners</h3>
+							<div class="recommend-meta"><span>⭐ 4.7 <small>(900)</small></span><span>▣ 6 Weeks</span></div>
+							<button type="button" aria-label="Save UI/UX Design for Beginners">♧</button>
+						</article>
+						<article class="recommended-course">
+							<div class="course-cover cover-flutter"><span>◆</span></div>
+							<h3>Mobile App Development<br>with Flutter</h3>
+							<div class="recommend-meta"><span>⭐ 4.6 <small>(1.2K)</small></span><span>▣ 10 Weeks</span></div>
+							<button type="button" aria-label="Save Mobile App Development with Flutter">♧</button>
+						</article>
+						<article class="recommended-course">
+							<div class="course-cover cover-marketing"><span>📣</span></div>
+							<h3>Digital Marketing<br>Masterclass</h3>
+							<div class="recommend-meta"><span>⭐ 4.8 <small>(1.9K)</small></span><span>▣ 8 Weeks</span></div>
+							<button type="button" aria-label="Save Digital Marketing Masterclass">♧</button>
+						</article>
+					</div>
+				</section>
+			</div>
+		</main>
+
+		<aside class="right-column" aria-label="Learning tools and activity">
+			<section class="widget buddy-widget" id="learning-buddy">
+				<div class="buddy-heading"><div><h2>Your Learning Buddy</h2><p>I'm here to help with your<br>courses, doubts and projects.</p></div><span class="buddy-bot" aria-hidden="true">🤖</span></div>
+				<a class="buddy-button" href="#quick-practice">Ask UniShikha AI <span aria-hidden="true">→</span></a>
+				<a class="suggestion" href="#quick-practice">◇ Explain this topic</a>
+				<a class="suggestion" href="#continue">◇ Summarize this lesson</a>
+				<a class="suggestion" href="#quick-practice">◇ Give me practice questions</a>
+			</section>
+
+			<section class="widget streak-widget">
+				<div class="widget-heading"><h2><span aria-hidden="true">🔥</span> Learning Streak <small>7 Days</small></h2><span aria-hidden="true">›</span></div>
+				<div class="streak-chart" aria-label="Learning hours over the last seven days">
+					<div><span>8h</span><i style="--bar-height: 76%"></i><small>M</small></div>
+					<div><span>4h</span><i style="--bar-height: 38%"></i><small>T</small></div>
+					<div><span>6h</span><i style="--bar-height: 58%"></i><small>W</small></div>
+					<div><span>5h</span><i style="--bar-height: 48%"></i><small>T</small></div>
+					<div><span>8h</span><i style="--bar-height: 76%"></i><small>F</small></div>
+					<div><span>3h</span><i style="--bar-height: 29%"></i><small>S</small></div>
+					<div><span>4h</span><i style="--bar-height: 38%"></i><small>S</small></div>
+				</div>
+			</section>
+
+			<section class="widget goal-widget" id="weekly-goal">
+				<div class="widget-heading"><h2><span aria-hidden="true">🎯</span> Weekly Goal</h2><span aria-hidden="true">›</span></div>
+				<p class="goal-course">Python for Beginners</p>
+				<div class="goal-row"><span class="goal-icon green">▣</span><span>Complete 5 lessons<small>3/5</small><i><b style="width: 60%"></b></i></span><span>›</span></div>
+				<div class="goal-row"><span class="goal-icon purple">✿</span><span>Attempt 2 quizzes<small>1/2</small><i><b style="width: 50%"></b></i></span><span>›</span></div>
+				<div class="goal-row"><span class="goal-icon orange">♜</span><span>Build 1 mini project<small>0/1</small><i><b style="width: 8%"></b></i></span><span>›</span></div>
+			</section>
+
+			<section class="widget achievements-widget" id="achievements">
+				<div class="widget-heading"><h2><span aria-hidden="true">🏆</span> Recent Achievements</h2><span aria-hidden="true">›</span></div>
+				<div class="achievement-row"><span class="achievement-icon">✓</span><span><strong>Python Basics</strong><small>Completed first module</small></span><small>2d ago</small></div>
+				<div class="achievement-row"><span class="achievement-icon flame">🔥</span><span><strong>Quiz streak: 3 days</strong><small>Keep it up!</small></span><small>Today</small></div>
+			</section>
+		</aside>
+	</div>
+
+	<script>
+		const menuToggle = document.querySelector('.menu-toggle');
+		const sidebar = document.querySelector('#sidebar');
+
+		menuToggle.addEventListener('click', () => {
+			const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+			menuToggle.setAttribute('aria-expanded', String(!isOpen));
+			sidebar.classList.toggle('is-open', !isOpen);
+		});
+
+		sidebar.addEventListener('click', (event) => {
+			if (event.target instanceof HTMLAnchorElement && window.matchMedia('(max-width: 760px)').matches) {
+				menuToggle.setAttribute('aria-expanded', 'false');
+				sidebar.classList.remove('is-open');
+			}
+		});
+	</script>
+</body>
+</html>

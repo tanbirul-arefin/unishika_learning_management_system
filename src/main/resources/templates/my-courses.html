@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#f5f8fc">
+	<meta name="description" content="Explore your UniShikha courses and continue learning.">
+	<title>My Courses | UniShikha</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" th:href="@{/css/dashboard.css}">
+	<link rel="stylesheet" th:href="@{/css/my-courses.css}">
+</head>
+<body>
+	<div class="dashboard-shell courses-shell">
+		<aside class="sidebar" id="sidebar">
+			<a class="brand" th:href="@{/dashboard}" aria-label="UniShikha dashboard">
+				<svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+					<path d="M4 15 24 5l20 10-20 10L4 15Z" fill="currentColor"/>
+					<path d="M12 20v11c7 7 17 7 24 0V20l-12 6-12-6Z" fill="currentColor" opacity=".78"/>
+					<path d="M43 17v13" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+					<circle cx="43" cy="33" r="2.5" fill="currentColor"/>
+				</svg>
+				<span>Uni<span>Shikha</span><small>Learn · Build · Grow</small></span>
+			</a>
+
+			<nav class="side-nav" aria-label="Student navigation">
+				<a class="side-link" th:href="@{/dashboard}"><span aria-hidden="true">⌂</span>Dashboard</a>
+				<a class="side-link active" th:href="@{/mycourses}" aria-current="page"><span aria-hidden="true">▤</span>My Courses</a>
+				<a class="side-link" th:href="@{/home} + '#courses'"><span aria-hidden="true">◎</span>Explore</a>
+				<a class="side-link" th:href="@{/dashboard} + '#live-classes'"><span aria-hidden="true">▷</span>Live Classes</a>
+				<a class="side-link" th:href="@{/dashboard} + '#weekly-goal'"><span aria-hidden="true">▧</span>Assignments</a>
+				<a class="side-link" th:href="@{/dashboard} + '#quick-practice'"><span aria-hidden="true">☑</span>Quizzes</a>
+				<a class="side-link" th:href="@{/dashboard} + '#weekly-goal'"><span aria-hidden="true">◇</span>Projects</a>
+				<a class="side-link" th:href="@{/dashboard} + '#learning-buddy'"><span aria-hidden="true">♧</span>Community</a>
+				<a class="side-link" th:href="@{/dashboard} + '#achievements'"><span aria-hidden="true">♢</span>Certificates</a>
+				<a class="side-link" th:href="@{/dashboard} + '#continue'"><span aria-hidden="true">▤</span>Notes</a>
+				<a class="side-link" th:href="@{/dashboard} + '#live-classes'"><span aria-hidden="true">▦</span>Calendar</a>
+				<a class="side-link" th:href="@{/dashboard} + '#learning-buddy'"><span aria-hidden="true">▱</span>Messages</a>
+			</nav>
+
+			<div class="sidebar-footer">
+				<div class="sidebar-footer-glow"></div>
+				<a class="side-link logout-link" th:href="@{/login}"><span aria-hidden="true">↪</span>Log out</a>
+			</div>
+		</aside>
+
+		<main class="main-column courses-main">
+			<header class="topbar courses-topbar">
+				<button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="sidebar" aria-expanded="false">
+					<span></span><span></span><span></span>
+				</button>
+				<label class="search-box">
+					<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16 16 4 4"></path></svg>
+					<input type="search" placeholder="Search for courses, topics, instructors..." aria-label="Search courses, topics, and instructors">
+					<kbd>Ctrl K</kbd>
+				</label>
+				<div class="topbar-actions">
+					<button class="icon-button theme-button" type="button" aria-label="Toggle color theme">☼</button>
+					<button class="icon-button notification-button" type="button" aria-label="Notifications">♧<i></i></button>
+					<a class="profile" th:href="@{/login}" aria-label="Tanvir Ahmed, student profile">
+						<img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&amp;fit=crop&amp;w=96&amp;q=80" alt="">
+						<span><strong>Tanvir Ahmed</strong><small>Student</small></span>
+						<span class="profile-chevron" aria-hidden="true">⌄</span>
+					</a>
+				</div>
+			</header>
+
+			<div class="courses-content">
+				<section class="courses-heading" aria-labelledby="courses-title">
+					<div>
+						<h1 id="courses-title">My Courses</h1>
+						<p>Here are the courses you're enrolled in. Continue learning and achieve your goals!</p>
+					</div>
+					<label class="sort-control">Sort by:
+						<select aria-label="Sort courses">
+							<option>Recent</option>
+							<option>Name</option>
+							<option>Progress</option>
+						</select>
+					</label>
+				</section>
+
+				<section class="enrolled-courses" aria-label="Enrolled courses">
+					<article class="enrolled-card selected-course">
+						<div class="enrolled-cover flutter-cover">
+							<span class="course-status">In Progress</span>
+							<svg class="cover-symbol flutter-logo" viewBox="0 0 64 64" aria-hidden="true">
+								<path d="M37 5 8 34l10 10L57 5H37Z"/>
+								<path d="m37 28-14 14 10 10 24-24H37Z"/>
+								<path d="m17 43-9 9 10 10 10-10-11-9Z"/>
+							</svg>
+							<span class="cover-phone" aria-hidden="true"><i></i><i></i><i></i></span>
+						</div>
+						<div class="enrolled-info">
+							<h2>Mobile App Development<br>with Flutter</h2>
+							<div class="completion-row"><span class="mini-progress"><i style="width: 35%"></i></span><strong>35% Complete</strong></div>
+							<div class="enrolled-meta"><span>▣ 28 Lessons</span><span>☑ 5 Quizzes</span><a href="#course-content" aria-label="Open Flutter course">→</a></div>
+						</div>
+					</article>
+					<article class="enrolled-card">
+						<div class="enrolled-cover react-cover">
+							<span class="course-status">In Progress</span>
+							<svg class="cover-symbol react-logo" viewBox="0 0 64 64" aria-hidden="true">
+								<ellipse cx="32" cy="32" rx="27" ry="10"/>
+								<ellipse cx="32" cy="32" rx="27" ry="10" transform="rotate(60 32 32)"/>
+								<ellipse cx="32" cy="32" rx="27" ry="10" transform="rotate(120 32 32)"/>
+								<circle cx="32" cy="32" r="4"/>
+							</svg>
+							<span class="js-tile" aria-hidden="true">JS</span>
+						</div>
+						<div class="enrolled-info">
+							<h2>Development with React</h2>
+							<div class="completion-row"><span class="mini-progress"><i style="width: 20%"></i></span><strong>20% Complete</strong></div>
+							<div class="enrolled-meta"><span>▣ 32 Lessons</span><span>☑ 6 Quizzes</span><a href="#course-content" aria-label="Open React course">→</a></div>
+						</div>
+					</article>
+					<article class="enrolled-card">
+						<div class="enrolled-cover design-cover">
+							<span class="course-status">In Progress</span>
+							<span class="figma-symbol" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+							<span class="design-window" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+						</div>
+						<div class="enrolled-info">
+							<h2>UI UX for Designers</h2>
+							<div class="completion-row"><span class="mini-progress"><i style="width: 12%"></i></span><strong>10% Complete</strong></div>
+							<div class="enrolled-meta"><span>▣ 28 Lessons</span><span>☑ 4 Quizzes</span><a href="#course-content" aria-label="Open UI UX course">→</a></div>
+						</div>
+					</article>
+				</section>
+
+				<div class="current-course-layout">
+					<section class="current-course-banner" aria-labelledby="current-course-title">
+						<span class="current-label">Current Course</span>
+						<div class="current-course-copy">
+							<h2 id="current-course-title">Python for Beginners</h2>
+							<p>Learn Python from scratch with hands-on projects<br class="desktop-break"> and real-world examples.</p>
+							<div class="current-progress-row">
+								<span class="current-progress"><i style="width: 35%"></i></span>
+								<strong>35% Complete</strong>
+							</div>
+							<a class="continue-button" href="#course-content"><span aria-hidden="true">▶</span> Continue Learning <b aria-hidden="true">→</b></a>
+						</div>
+						<div class="python-graphic" aria-hidden="true">
+							<span>🐍</span>
+							<i class="code-line line-one"></i><i class="code-line line-two"></i><i class="code-line line-three"></i>
+						</div>
+					</section>
+
+					<aside class="course-plan" aria-labelledby="plan-title">
+						<h2 id="plan-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 7 4 3 5-6 5 6 4-3-2 12H5L3 7Z"/><path d="M6 22h12"/></svg> My Plan</h2>
+						<dl>
+							<div><dt><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 9 9-5 9 5-9 5-9-5Z"/><path d="M7 12v5c3 2 7 2 10 0v-5m5-2v6"/></svg>Course Access</dt><dd>Lifetime</dd></div>
+							<div><dt><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5h11M9 12h11M9 19h11"/><circle cx="4" cy="5" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="19" r="1"/></svg>Total Lessons</dt><dd>24 Lessons</dd></div>
+							<div><dt><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="m8 12 3 3 5-6"/></svg>Total Quizzes</dt><dd>5 Quizzes</dd></div>
+							<div><dt><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V4h8v3m-13 5h18m-11 0v2h4v-2"/></svg>Mini Projects</dt><dd>7 Assignments</dd></div>
+							<div><dt><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Estimated Time</dt><dd>12 Hours</dd></div>
+							<div><dt><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V12h4v8m4 0V7h4v13m4 0V4h2v16"/></svg>Skill Level</dt><dd>Beginner</dd></div>
+							<div><dt><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-3-6 3V3Z"/><path d="M9 8h6m-6 4h6"/></svg>Certificate</dt><dd>Included</dd></div>
+						</dl>
+					</aside>
+				</div>
+
+				<section class="course-content" id="course-content" aria-labelledby="content-title">
+					<div class="content-heading">
+						<h2 id="content-title">Course Content</h2>
+						<span>Total 24 Lessons</span>
+					</div>
+					<div class="content-layout">
+						<div class="chapter-list" aria-label="Course chapters">
+							<button class="chapter-item active" type="button" aria-expanded="true" aria-controls="chapter-lessons" data-chapter="0"><span class="chapter-number">1</span><span class="chapter-copy">1. Introduction<small>4 Lessons</small></span><span class="chapter-chevron">⌄</span></button>
+							<button class="chapter-item" type="button" aria-expanded="false" aria-controls="chapter-lessons" data-chapter="1"><span class="chapter-number">2</span><span class="chapter-copy">2. Variables &amp; Data Types<small>3 Lessons</small></span><span class="chapter-chevron">⌄</span></button>
+							<button class="chapter-item" type="button" aria-expanded="false" aria-controls="chapter-lessons" data-chapter="2"><span class="chapter-number">3</span><span class="chapter-copy">3. Operators<small>3 Lessons</small></span><span class="chapter-chevron">⌄</span></button>
+							<button class="chapter-item" type="button" aria-expanded="false" aria-controls="chapter-lessons" data-chapter="3"><span class="chapter-number">4</span><span class="chapter-copy">4. Control Flow<small>4 Lessons</small></span><span class="chapter-chevron">⌄</span></button>
+							<button class="chapter-item" type="button" aria-expanded="false" aria-controls="chapter-lessons" data-chapter="4"><span class="chapter-number">5</span><span class="chapter-copy">5. Functions<small>3 Lessons</small></span><span class="chapter-chevron">⌄</span></button>
+							<button class="chapter-item" type="button" aria-expanded="false" aria-controls="chapter-lessons" data-chapter="5"><span class="chapter-number">6</span><span class="chapter-copy">6. File Handling<small>3 Lessons</small></span><span class="chapter-chevron">⌄</span></button>
+							<button class="chapter-item" type="button" aria-expanded="false" aria-controls="chapter-lessons" data-chapter="6"><span class="chapter-number">7</span><span class="chapter-copy">7. Mini Project<small>4 Lessons</small></span><span class="chapter-chevron">⌄</span></button>
+						</div>
+						<div class="lesson-panel" id="chapter-lessons">
+							<h3 id="lesson-heading">1. Introduction <span>(4 Lessons)</span></h3>
+							<button class="lesson-row completed-lesson" type="button" aria-pressed="false"><span class="lesson-play">▶</span><span class="lesson-index">1.</span><span class="lesson-name">What is Python?</span><time>08:15</time><span class="lesson-complete" aria-label="Completed">✓</span></button>
+							<button class="lesson-row completed-lesson" type="button" aria-pressed="false"><span class="lesson-play">▶</span><span class="lesson-index">2.</span><span class="lesson-name">Why Learn Python?</span><time>10:22</time><span class="lesson-complete" aria-label="Completed">✓</span></button>
+							<button class="lesson-row" type="button" aria-pressed="true"><span class="lesson-play">▶</span><span class="lesson-index">3.</span><span class="lesson-name">Setting Up Python Environment</span><time>12:30</time><span class="lesson-pending" aria-label="Not completed"></span></button>
+							<button class="lesson-row" type="button" aria-pressed="false"><span class="lesson-play">▶</span><span class="lesson-index">4.</span><span class="lesson-name">Your First Python Program</span><time>14:18</time><span class="lesson-pending" aria-label="Not completed"></span></button>
+						</div>
+					</div>
+				</section>
+			</div>
+		</main>
+	</div>
+
+	<script th:inline="none">
+		const menuToggle = document.querySelector('.menu-toggle');
+		const sidebar = document.querySelector('#sidebar');
+
+		menuToggle.addEventListener('click', () => {
+			const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+			menuToggle.setAttribute('aria-expanded', String(!isOpen));
+			sidebar.classList.toggle('is-open', !isOpen);
+		});
+
+		sidebar.addEventListener('click', (event) => {
+			if (event.target instanceof HTMLAnchorElement && window.matchMedia('(max-width: 760px)').matches) {
+				menuToggle.setAttribute('aria-expanded', 'false');
+				sidebar.classList.remove('is-open');
+			}
+		});
+
+		const chapters = [
+			{ title: '1. Introduction', count: 4, lessons: [{ title: 'What is Python?', duration: '08:15' }, { title: 'Why Learn Python?', duration: '10:22' }, { title: 'Setting Up Python Environment', duration: '12:30' }, { title: 'Your First Python Program', duration: '14:18' }] },
+			{ title: '2. Variables & Data Types', count: 3, lessons: [{ title: 'Variables in Python', duration: '09:42' }, { title: 'Numbers and Strings', duration: '11:06' }, { title: 'Lists and Tuples', duration: '13:20' }] },
+			{ title: '3. Operators', count: 3, lessons: [{ title: 'Arithmetic Operators', duration: '07:54' }, { title: 'Comparison Operators', duration: '09:18' }, { title: 'Logical Operators', duration: '10:45' }] },
+			{ title: '4. Control Flow', count: 4, lessons: [{ title: 'If and Else Statements', duration: '10:12' }, { title: 'For Loops', duration: '12:06' }, { title: 'While Loops', duration: '09:35' }, { title: 'Loop Practice', duration: '14:10' }] },
+			{ title: '5. Functions', count: 3, lessons: [{ title: 'Creating Functions', duration: '11:14' }, { title: 'Parameters and Returns', duration: '12:40' }, { title: 'Scope and Modules', duration: '10:28' }] },
+			{ title: '6. File Handling', count: 3, lessons: [{ title: 'Reading Files', duration: '08:50' }, { title: 'Writing Files', duration: '09:26' }, { title: 'Working with CSV', duration: '12:02' }] },
+			{ title: '7. Mini Project', count: 4, lessons: [{ title: 'Project Requirements', duration: '06:42' }, { title: 'Plan the Program', duration: '10:17' }, { title: 'Build the Project', duration: '16:35' }, { title: 'Review and Next Steps', duration: '08:14' }] }
+		];
+
+		const chapterButtons = document.querySelectorAll('.chapter-item');
+		const lessonPanel = document.querySelector('#chapter-lessons');
+		const lessonHeading = document.querySelector('#lesson-heading');
+
+		chapterButtons.forEach((button) => {
+			button.addEventListener('click', () => {
+				chapterButtons.forEach((item) => {
+					item.classList.remove('active');
+					item.setAttribute('aria-expanded', 'false');
+				});
+				button.classList.add('active');
+				button.setAttribute('aria-expanded', 'true');
+
+				const chapter = chapters[Number(button.dataset.chapter)];
+				lessonHeading.replaceChildren(document.createTextNode(`${chapter.title} `));
+				const lessonCount = document.createElement('span');
+				lessonCount.textContent = `(${chapter.count} Lessons)`;
+				lessonHeading.append(lessonCount);
+				lessonPanel.querySelectorAll('.lesson-row').forEach((lesson) => lesson.remove());
+
+				chapter.lessons.forEach((lessonData, index) => {
+					const lesson = document.createElement('button');
+					lesson.type = 'button';
+					lesson.className = 'lesson-row';
+					lesson.setAttribute('aria-pressed', String(index === 0));
+					lesson.innerHTML = `<span class="lesson-play">▶</span><span class="lesson-index">${index + 1}.</span><span class="lesson-name"></span><time></time><span class="lesson-pending" aria-label="Not completed"></span>`;
+					lesson.querySelector('.lesson-name').textContent = lessonData.title;
+					lesson.querySelector('time').textContent = lessonData.duration;
+					lesson.addEventListener('click', () => {
+						lessonPanel.querySelectorAll('.lesson-row').forEach((item) => item.setAttribute('aria-pressed', 'false'));
+						lesson.setAttribute('aria-pressed', 'true');
+					});
+					lessonPanel.append(lesson);
+				});
+			});
+		});
+
+		document.querySelectorAll('.lesson-row').forEach((lesson) => {
+			lesson.addEventListener('click', () => {
+				lessonPanel.querySelectorAll('.lesson-row').forEach((item) => item.setAttribute('aria-pressed', 'false'));
+				lesson.setAttribute('aria-pressed', 'true');
+			});
+		});
+	</script>
+</body>
+</html>
