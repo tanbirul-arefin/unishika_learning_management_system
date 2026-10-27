@@ -16,6 +16,11 @@ public class HomeController {
 		return "login";
 	}
 
+	@GetMapping("/dashboard")
+	public String dashboard() {
+		return "dashboard";
+	}
+
 	@GetMapping({ "/registration", "/regtration" })
 	public String registration() {
 		return "registration";
