@@ -2,6 +2,7 @@ package com.example.UNISHIKHA;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class HomeController {
@@ -16,13 +17,28 @@ public class HomeController {
 		return "login";
 	}
 
+	@PostMapping("/login")
+	public String handleLogin() {
+		return "redirect:/dashboard";
+	}
+
 	@GetMapping("/dashboard")
 	public String dashboard() {
 		return "dashboard";
 	}
 
+	@GetMapping({ "/mycourses", "/my-courses" })
+	public String myCourses() {
+		return "my-courses";
+	}
+
 	@GetMapping({ "/registration", "/regtration" })
 	public String registration() {
 		return "registration";
+	}
+
+	@PostMapping({ "/registration", "/regtration" })
+	public String handleRegistration() {
+		return "redirect:/login";
 	}
 }
