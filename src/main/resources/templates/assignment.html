@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#111d31">
+	<meta name="description" content="View instructions and submit your UniShikha assignment.">
+	<title>Assignments | UniShikha</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" th:href="@{/css/assignment.css}">
+</head>
+<body>
+	<div class="app-shell">
+		<aside class="sidebar">
+			<a class="brand" th:href="@{/dashboard}" aria-label="UniShikha dashboard">
+				<svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+					<path d="M4 15 24 5l20 10-20 10L4 15Z" fill="currentColor"/>
+					<path d="M12 20v11c7 7 17 7 24 0V20l-12 6-12-6Z" fill="currentColor" opacity=".78"/>
+					<path d="M43 17v13" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+					<circle cx="43" cy="33" r="2.5" fill="currentColor"/>
+				</svg>
+				<span>UniShikha</span>
+			</a>
+			<nav class="side-nav" aria-label="Student navigation">
+				<a class="nav-link" th:href="@{/dashboard}"><span class="nav-icon">⌂</span>Dashboard</a>
+				<a class="nav-link" th:href="@{/mycourses}"><span class="nav-icon">▤</span>My Courses</a>
+				<a class="nav-link" th:href="@{/live-class}"><span class="nav-icon">▣</span>Live Class</a>
+				<a class="nav-link active" th:href="@{/assignments}"><span class="nav-icon">☷</span>Assignments</a>
+				<a class="nav-link" href="#assistant"><span class="nav-icon">☑</span>Quizzes</a>
+				<a class="nav-link" href="#assignment-content"><span class="nav-icon">▤</span>Notes</a>
+				<a class="nav-link" href="#discussion"><span class="nav-icon">☏</span>Messages</a>
+				<a class="nav-link" th:href="@{/login}"><span class="nav-icon">♙</span>Profile</a>
+				<a class="nav-link" th:href="@{/login}"><span class="nav-icon">⚙</span>Settings</a>
+			</nav>
+			<a class="nav-link logout-link" th:href="@{/login}"><span class="nav-icon">⇥</span>Logout</a>
+		</aside>
+
+		<main class="main-content">
+			<header class="topbar">
+				<div class="page-heading">
+					<h1>Assignments</h1>
+					<div class="breadcrumbs"><a th:href="@{/dashboard}">Home</a><span>›</span><span>Assignments</span><span>›</span><span>Control Flow Programming</span></div>
+				</div>
+				<div class="topbar-actions">
+					<label class="search-box"><span aria-hidden="true">⌕</span><input type="search" placeholder="Search assignments, courses..." aria-label="Search assignments and courses"></label>
+					<button class="notification-button" type="button" aria-label="Notifications">♧<i></i></button>
+					<div class="profile-avatar">TA</div>
+					<strong class="profile-name">Tanzim Ahmed</strong>
+					<button class="profile-menu" type="button" aria-label="Profile menu">⌄</button>
+				</div>
+			</header>
+
+			<div class="page-grid">
+				<div class="assignment-column">
+					<section class="assignment-overview">
+						<div class="assignment-course">
+							<div class="python-logo" aria-hidden="true">Py</div>
+							<div class="assignment-title">
+								<div class="title-line"><h2>Control Flow Programming</h2><span class="status-upcoming">Upcoming</span></div>
+								<p>Python for Beginners <span>│</span> Instructor: Tanvir Rahman</p>
+							</div>
+						</div>
+						<div class="assignment-meta">
+							<div class="meta-item"><span class="meta-icon">▦</span><span><small>Due Date</small><strong>28 Oct 2026, 11:59 PM</strong></span></div>
+							<div class="meta-item"><span class="meta-icon">▤</span><span><small>Max Marks</small><strong>10</strong></span></div>
+							<div class="meta-item"><span class="meta-icon">⇧</span><span><small>Submission Type</small><strong>File Upload</strong></span></div>
+							<div class="meta-item time-left"><span class="meta-icon">◷</span><span><small>Time Left</small><strong>3 days left</strong></span></div>
+						</div>
+					</section>
+
+					<nav class="tabs" role="tablist" aria-label="Assignment sections">
+						<button class="tab active" type="button" role="tab" aria-selected="true" data-tab="instructions">Instructions</button>
+						<button class="tab" type="button" role="tab" aria-selected="false" data-tab="resources">Resources</button>
+						<button class="tab" type="button" role="tab" aria-selected="false" data-tab="discussion">Discussion (12)</button>
+						<button class="tab" type="button" role="tab" aria-selected="false" data-tab="submissions">Submissions</button>
+						<button class="tab" type="button" role="tab" aria-selected="false" data-tab="grading">Grading</button>
+					</nav>
+
+					<div class="tab-content" id="assignment-content">
+						<div class="instructions-grid" id="instructions-panel" role="tabpanel">
+							<section class="content-card instruction-card">
+								<div class="card-heading"><span class="heading-icon purple-icon">☷</span><div><h2>Assignment Instructions</h2><p>Read the requirements carefully before submitting.</p></div></div>
+								<p class="instruction-intro">Solve the given problems using if, else and elif statements. Upload your Python code file (.py) and a short explanation document.</p>
+								<h3>Questions:</h3>
+								<ol class="question-list">
+									<li>Write a program to check if a number is positive, negative or zero.</li>
+									<li>Write a program to find the grade of a student based on marks.</li>
+									<li>Write a program to check if a year is a leap year or not.</li>
+								</ol>
+								<div class="example-output"><strong>Example Output:</strong><code>Enter a number: &nbsp;10<br>The number is positive.</code></div>
+								<div class="instruction-footer"><span>◷ &nbsp;Estimated time: 45 minutes</span><span>♧ &nbsp;Individual assignment</span></div>
+							</section>
+
+							<div class="support-column">
+								<section class="content-card resource-card">
+									<div class="card-heading compact-heading"><h2>Attachments / Resources</h2><span class="file-count">3 files</span></div>
+									<a class="file-row" href="#assignment-content" download="Assignment_Instructions.pdf"><span class="file-icon pdf">PDF</span><span class="file-info"><strong>Assignment_Instructions.pdf</strong><small>245 KB · PDF document</small></span><b>↓</b></a>
+									<a class="file-row" href="#assignment-content" download="Sample_Code.zip"><span class="file-icon zip">▤</span><span class="file-info"><strong>Sample_Code.zip</strong><small>1.2 MB · Source files</small></span><b>↓</b></a>
+									<a class="file-row" href="#assignment-content" download="Reference_Link.txt"><span class="file-icon txt">&lt;/&gt;</span><span class="file-info"><strong>Reference_Link.txt</strong><small>2 KB · Text file</small></span><b>↓</b></a>
+								</section>
+								<section class="content-card guidelines-card">
+									<h2>Submission Guidelines</h2>
+									<ul>
+										<li><span>✓</span>Upload your code file (.py)</li>
+										<li><span>✓</span>Add a short explanation (PDF or DOCX)</li>
+										<li><span>✓</span>File size must be less than 50 MB</li>
+										<li><span>✓</span>Plagiarism is not allowed</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+
+						<section class="content-card alternate-panel" id="resources-panel" role="tabpanel" hidden>
+							<div class="card-heading"><span class="heading-icon blue-icon">▤</span><div><h2>Assignment Resources</h2><p>Files and learning materials shared by your instructor.</p></div></div>
+							<p>Download the assignment instructions, sample code, and reference links from the Attachments / Resources panel.</p>
+							<a class="primary-button" href="#instructions-panel" data-return-tab="instructions">View Instructions</a>
+						</section>
+						<section class="content-card alternate-panel" id="discussion-panel" role="tabpanel" hidden>
+							<div class="card-heading"><span class="heading-icon purple-icon">☏</span><div><h2>Assignment Discussion</h2><p>Discuss questions with your instructor and classmates.</p></div></div>
+							<div class="discussion-message"><span class="mini-avatar">TR</span><div><strong>Tanvir Rahman <small>Instructor · 10:30 AM</small></strong><p>Please make sure to test all three conditions before uploading your solution.</p></div></div>
+							<form class="discussion-form"><label class="sr-only" for="discussion-input">Write a discussion message</label><input id="discussion-input" placeholder="Write a message..." type="text"><button class="primary-button" type="submit">Post</button></form>
+						</section>
+						<section class="content-card alternate-panel" id="submissions-panel" role="tabpanel" hidden>
+							<div class="card-heading"><span class="heading-icon blue-icon">⇧</span><div><h2>Your Submissions</h2><p>Review files you have submitted for this assignment.</p></div></div>
+							<p class="empty-state">No submissions yet. Upload your work below when it's ready.</p>
+							<a class="primary-button" href="#submit-assignment" data-return-tab="instructions">Submit Assignment</a>
+						</section>
+						<section class="content-card alternate-panel" id="grading-panel" role="tabpanel" hidden>
+							<div class="card-heading"><span class="heading-icon green-icon">✓</span><div><h2>Grading Criteria</h2><p>Maximum score: 10 marks</p></div></div>
+							<ul class="rubric-list"><li><span>Correct conditional logic</span><strong>4 marks</strong></li><li><span>All questions completed</span><strong>3 marks</strong></li><li><span>Code quality and readability</span><strong>2 marks</strong></li><li><span>Explanation document</span><strong>1 mark</strong></li></ul>
+						</section>
+					</div>
+
+					<section class="submission-card" id="submit-assignment">
+						<div class="submission-heading"><span class="heading-icon purple-icon">⇧</span><div><h2>Submit Your Assignment</h2><p>Upload your solution before the due date.</p></div></div>
+						<div class="submission-grid">
+							<label class="drop-zone" id="drop-zone" for="assignment-files">
+								<input id="assignment-files" type="file" accept=".pdf,.doc,.docx,.zip,.py" multiple>
+								<span class="upload-icon">⇧</span>
+								<strong>Drag &amp; drop your files here</strong>
+								<span>or <b>click to upload</b></span>
+								<small>Supported: PDF, DOC, DOCX, ZIP, PY (Max 50 MB)</small>
+							</label>
+							<div class="submission-fields">
+								<div class="selected-files" id="selected-files"><strong>Files (0)</strong><p class="no-files">No files selected yet</p></div>
+								<label class="notes-label" for="submission-notes">Submission Notes <span>(Optional)</span></label>
+								<textarea id="submission-notes" rows="2" placeholder="Write a short note about your submission..."></textarea>
+								<div class="submit-row"><span class="submit-feedback" id="submit-feedback" aria-live="polite"></span><button class="submit-button" id="submit-button" type="button">➤ &nbsp;Submit Assignment</button></div>
+							</div>
+						</div>
+					</section>
+				</div>
+
+				<aside class="right-column">
+					<section class="assistant-card" id="assistant">
+						<div class="assistant-glow">✦</div>
+						<div class="assistant-heading"><span class="ai-sparkle">✦</span><div><h2>AI Assignment Assistant <span>Beta</span></h2><p>Get help with your assignment</p></div></div>
+						<div class="assistant-actions">
+							<button type="button" data-assistant="Explain Question"><span class="assistant-icon blue-icon">▤</span><span><strong>Explain Question</strong><small>Understand the question easily</small></span></button>
+							<button type="button" data-assistant="Generate Ideas"><span class="assistant-icon yellow-icon">♧</span><span><strong>Generate Ideas</strong><small>Get solution approach</small></span></button>
+							<button type="button" data-assistant="Summarize PDF"><span class="assistant-icon purple-icon">▤</span><span><strong>Summarize PDF</strong><small>Extract key points</small></span></button>
+							<button type="button" data-assistant="Check Code"><span class="assistant-icon green-icon">&lt;/&gt;</span><span><strong>Check Code</strong><small>Find mistakes in your code</small></span></button>
+						</div>
+						<p class="assistant-feedback" id="assistant-feedback" aria-live="polite" hidden></p>
+						<button class="assistant-open" type="button">✦ &nbsp; Open AI Assistant</button>
+						<p class="ai-disclaimer">AI suggestions are for guidance. Submit your own work.</p>
+					</section>
+
+					<section class="side-card upcoming-card">
+						<div class="side-card-heading"><h2>Upcoming Assignments</h2><a href="#upcoming-list">View All</a></div>
+						<div id="upcoming-list">
+							<article class="upcoming-item"><div class="date-tile"><span>NOV</span><strong>02</strong></div><div class="upcoming-info"><strong>Data Analysis Report</strong><small>Data Analysis with Python</small></div><span class="assignment-state">Not Started</span></article>
+							<article class="upcoming-item"><div class="date-tile"><span>NOV</span><strong>10</strong></div><div class="upcoming-info"><strong>Python Project</strong><small>Python for Beginners</small></div><span class="assignment-state">Not Started</span></article>
+							<article class="upcoming-item"><div class="date-tile"><span>NOV</span><strong>15</strong></div><div class="upcoming-info"><strong>Research Summary</strong><small>Academic Writing</small></div><span class="assignment-state">Not Started</span></article>
+						</div>
+					</section>
+
+					<section class="side-card recent-card">
+						<div class="side-card-heading"><h2>Recent Submissions</h2><a href="#submissions-panel" data-open-tab="submissions">View All</a></div>
+						<article class="recent-item"><span class="recent-file blue-icon">▤</span><div class="recent-info"><strong>Quiz System Design</strong><small>Web Development</small><time>20 Oct 2026, 10:45 PM</time></div><span class="graded">Graded <b>8/10</b></span></article>
+						<article class="recent-item"><span class="recent-file purple-icon">▤</span><div class="recent-info"><strong>Database Design Report</strong><small>Database Management</small><time>15 Oct 2026, 11:20 PM</time></div><span class="graded">Graded <b>9/10</b></span></article>
+					</section>
+				</aside>
+			</div>
+			<footer class="page-footer">© 2026 UniShikha <span>•</span> Learn together, grow together.</footer>
+		</main>
+	</div>
+
+	<script>
+		const tabs = document.querySelectorAll('.tab');
+		const tabPanels = ['instructions', 'resources', 'discussion', 'submissions', 'grading'];
+		function selectTab(name) {
+			tabs.forEach((tab) => {
+				const active = tab.dataset.tab === name;
+				tab.classList.toggle('active', active);
+				tab.setAttribute('aria-selected', String(active));
+			});
+			tabPanels.forEach((panel) => {
+				document.querySelector(`#${panel}-panel`).hidden = panel !== name;
+			});
+		}
+		tabs.forEach((tab) => tab.addEventListener('click', () => selectTab(tab.dataset.tab)));
+		document.querySelectorAll('[data-return-tab], [data-open-tab]').forEach((link) => {
+			link.addEventListener('click', (event) => {
+				event.preventDefault();
+				selectTab(link.dataset.returnTab || link.dataset.openTab);
+				document.querySelector('.tabs').scrollIntoView({ behavior: 'smooth', block: 'start' });
+			});
+		});
+
+		const fileInput = document.querySelector('#assignment-files');
+		const dropZone = document.querySelector('#drop-zone');
+		const fileList = document.querySelector('#selected-files');
+		const feedback = document.querySelector('#submit-feedback');
+		let selectedFiles = [];
+		function renderFiles() {
+			fileList.replaceChildren();
+			const heading = document.createElement('strong');
+			heading.textContent = `Files (${selectedFiles.length})`;
+			fileList.append(heading);
+			if (!selectedFiles.length) {
+				const empty = document.createElement('p');
+				empty.className = 'no-files';
+				empty.textContent = 'No files selected yet';
+				fileList.append(empty);
+				return;
+			}
+			selectedFiles.forEach((file, index) => {
+				const row = document.createElement('div');
+				row.className = 'selected-file';
+				const icon = document.createElement('span');
+				icon.className = 'file-icon selected-icon';
+				icon.textContent = file.name.split('.').pop().toUpperCase();
+				const info = document.createElement('span');
+				info.className = 'file-info';
+				const name = document.createElement('strong');
+				name.textContent = file.name;
+				const size = document.createElement('small');
+				size.textContent = file.size < 1024 * 1024 ? `${Math.max(1, Math.round(file.size / 1024))} KB` : `${(file.size / (1024 * 1024)).toFixed(1)} MB`;
+				const remove = document.createElement('button');
+				remove.type = 'button';
+				remove.className = 'remove-file';
+				remove.setAttribute('aria-label', `Remove ${file.name}`);
+				remove.textContent = '×';
+				remove.addEventListener('click', () => {
+					selectedFiles.splice(index, 1);
+					renderFiles();
+				});
+				info.append(name, size);
+				row.append(icon, info, remove);
+				fileList.append(row);
+			});
+		}
+		function addFiles(files) {
+			const allowedExtensions = ['pdf', 'doc', 'docx', 'zip', 'py'];
+			const validFiles = Array.from(files).filter((file) => {
+				const extension = file.name.split('.').pop().toLowerCase();
+				if (!allowedExtensions.includes(extension) || file.size > 50 * 1024 * 1024) {
+					feedback.textContent = 'Use PDF, DOC, DOCX, ZIP, or PY files under 50 MB.';
+					return false;
+				}
+				return true;
+			});
+			selectedFiles = [...selectedFiles, ...validFiles];
+			renderFiles();
+			if (validFiles.length) feedback.textContent = '';
+		}
+		fileInput.addEventListener('change', () => addFiles(fileInput.files));
+		['dragenter', 'dragover'].forEach((eventName) => dropZone.addEventListener(eventName, (event) => {
+			event.preventDefault();
+			dropZone.classList.add('drag-over');
+		}));
+		['dragleave', 'drop'].forEach((eventName) => dropZone.addEventListener(eventName, (event) => {
+			event.preventDefault();
+			dropZone.classList.remove('drag-over');
+		}));
+		dropZone.addEventListener('drop', (event) => addFiles(event.dataTransfer.files));
+
+		document.querySelector('#submit-button').addEventListener('click', () => {
+			feedback.textContent = selectedFiles.length ? 'Ready to submit — backend submission is not connected yet.' : 'Please choose at least one file before submitting.';
+			feedback.classList.toggle('success-message', selectedFiles.length > 0);
+		});
+		document.querySelectorAll('[data-assistant]').forEach((button) => {
+			button.addEventListener('click', () => {
+				const assistantFeedback = document.querySelector('#assistant-feedback');
+				assistantFeedback.hidden = false;
+				assistantFeedback.textContent = `${button.dataset.assistant} needs AI service integration.`;
+			});
+		});
+		document.querySelector('.assistant-open').addEventListener('click', () => {
+			const assistantFeedback = document.querySelector('#assistant-feedback');
+			assistantFeedback.hidden = false;
+			assistantFeedback.textContent = 'Connect an AI service to enable assignment help.';
+		});
+		document.querySelector('.discussion-form').addEventListener('submit', (event) => {
+			event.preventDefault();
+			const input = document.querySelector('#discussion-input');
+			if (!input.value.trim()) return;
+			const message = document.createElement('div');
+			message.className = 'discussion-message own-discussion';
+			const content = document.createElement('div');
+			const author = document.createElement('strong');
+			author.textContent = 'You';
+			const text = document.createElement('p');
+			text.textContent = input.value.trim();
+			content.append(author, text);
+			message.append(content);
+			document.querySelector('#discussion-panel').insertBefore(message, document.querySelector('.discussion-form'));
+			input.value = '';
+		});
+	</script>
+</body>
+</html>

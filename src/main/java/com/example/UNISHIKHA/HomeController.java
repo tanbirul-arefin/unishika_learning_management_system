@@ -32,6 +32,11 @@ public class HomeController {
 		return "live-class";
 	}
 
+	@GetMapping({ "/assignment", "/assignments" })
+	public String assignment() {
+		return "assignment";
+	}
+
 	@GetMapping("/explore")
 	public String explore() {
 		return "explore";
