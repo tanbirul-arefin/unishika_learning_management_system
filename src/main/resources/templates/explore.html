@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#f5f7fc">
+	<meta name="description" content="Explore expert-led courses and build your future with UniShikha.">
+	<title>Explore Courses | UniShikha</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" th:href="@{/css/explore.css}">
+</head>
+<body>
+	<header class="site-header">
+		<a class="brand" th:href="@{/dashboard}" aria-label="UniShikha dashboard">
+			<svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+				<path d="M4 15 24 5l20 10-20 10L4 15Z"/>
+				<path d="M12 20v11c7 7 17 7 24 0V20l-12 6-12-6Z" opacity=".72"/>
+				<path d="M43 17v13M43 33h.01" class="brand-detail"/>
+			</svg>
+			<span>UniShikha</span>
+		</a>
+		<button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="sidebar" aria-expanded="false">
+			<span></span><span></span><span></span>
+		</button>
+		<label class="search-box">
+			<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16 16 4 4"></path></svg>
+			<input id="course-search" type="search" placeholder="Search for courses, skills or instructors..." aria-label="Search courses, skills or instructors">
+			<button class="search-filter" type="button" aria-label="Show filters" data-scroll-filters>☷</button>
+		</label>
+		<div class="header-actions">
+			<a class="upgrade-link" th:href="@{/registration}"><span aria-hidden="true">♛</span> Upgrade</a>
+			<button class="notification-button" type="button" aria-label="Notifications">♧<i></i></button>
+			<a class="profile" th:href="@{/login}">
+				<img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&amp;fit=crop&amp;w=96&amp;q=80" alt="">
+				<span>Tanvir Ahmed</span><span aria-hidden="true">⌄</span>
+			</a>
+		</div>
+	</header>
+
+	<div class="app-layout">
+		<aside class="sidebar" id="sidebar">
+			<nav class="side-nav" aria-label="Student navigation">
+				<a class="side-link" th:href="@{/dashboard}"><span aria-hidden="true">⌂</span>Dashboard</a>
+				<a class="side-link" th:href="@{/mycourses}"><span aria-hidden="true">▤</span>My Courses</a>
+				<a class="side-link active" th:href="@{/explore}" aria-current="page"><span aria-hidden="true">⌕</span>Explore</a>
+				<a class="side-link" th:href="@{/dashboard} + '#live-classes'"><span aria-hidden="true">▷</span>Live Classes</a>
+				<a class="side-link" th:href="@{/dashboard} + '#weekly-goal'"><span aria-hidden="true">▧</span>Assignments</a>
+				<a class="side-link" th:href="@{/dashboard} + '#quick-practice'"><span aria-hidden="true">☑</span>Quizzes</a>
+				<a class="side-link" th:href="@{/dashboard} + '#weekly-goal'"><span aria-hidden="true">◇</span>Projects</a>
+				<a class="side-link" th:href="@{/dashboard} + '#learning-buddy'"><span aria-hidden="true">♧</span>Community</a>
+				<a class="side-link" th:href="@{/dashboard} + '#achievements'"><span aria-hidden="true">♢</span>Certificates</a>
+				<a class="side-link" th:href="@{/dashboard} + '#continue'"><span aria-hidden="true">▤</span>Notes</a>
+				<a class="side-link" th:href="@{/dashboard} + '#live-classes'"><span aria-hidden="true">▦</span>Calendar</a>
+				<a class="side-link" th:href="@{/dashboard} + '#learning-buddy'"><span aria-hidden="true">▱</span>Messages</a>
+			</nav>
+		</aside>
+
+		<main class="main-content">
+			<section class="hero-banner" aria-labelledby="hero-title">
+				<div class="hero-copy">
+					<h1 id="hero-title">Explore Courses</h1>
+					<p>Discover new skills, learn from expert instructors and<br class="desktop-break"> build your future with UniShikha.</p>
+				</div>
+				<div class="hero-art" aria-hidden="true">
+					<div class="hero-orbit"></div>
+					<img class="hero-person" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&amp;fit=crop&amp;w=600&amp;q=85" alt="">
+					<div class="hero-note">Learn<br><strong>Create</strong><br>Grow</div>
+					<svg class="hero-bulb" viewBox="0 0 48 48"><path d="M15 20a9 9 0 1 1 18 0c0 4-2 6-4 8-1 1-1 2-1 4h-8c0-2 0-3-1-4-2-2-4-4-4-8Z"/><path d="M20 36h8m-7 4h6M24 2v5m16 13h5M3 20h5m29-12-4 4M11 8l4 4"/></svg>
+					<p>A Brighter<br><strong>You</strong><span>▂ ▅ ▇</span></p>
+				</div>
+			</section>
+
+			<nav class="category-nav" aria-label="Course categories">
+				<button class="category-chip active" type="button" data-category="all"><span>▦</span>All Courses</button>
+				<button class="category-chip" type="button" data-category="technology"><span>▣</span>Technology</button>
+				<button class="category-chip" type="button" data-category="business"><span>▣</span>Business</button>
+				<button class="category-chip" type="button" data-category="design"><span>✿</span>Design</button>
+				<button class="category-chip" type="button" data-category="health"><span>⚗</span>Health &amp; Science</button>
+				<button class="category-chip" type="button" data-category="personal"><span>✦</span>Personal Development</button>
+				<button class="category-chip" type="button" data-category="marketing"><span>▥</span>Marketing</button>
+				<button class="category-chip more-chip" type="button" data-category="all"><span>•••</span>More</button>
+			</nav>
+
+			<div class="catalog-layout">
+				<aside class="filter-panel" id="filters" aria-label="Filter courses">
+					<div class="filter-heading"><h2><span aria-hidden="true">☷</span> Filter</h2><button type="button" id="reset-filters">Reset</button></div>
+					<fieldset class="filter-group">
+						<legend>Category <span>⌃</span></legend>
+						<label><input type="checkbox" name="category" value="all" checked><span>All Categories</span><small>(120)</small></label>
+						<label><input type="checkbox" name="category" value="technology"><span>Programming</span><small>(28)</small></label>
+						<label><input type="checkbox" name="category" value="design"><span>Design</span><small>(18)</small></label>
+						<label><input type="checkbox" name="category" value="business"><span>Business</span><small>(15)</small></label>
+						<label><input type="checkbox" name="category" value="marketing"><span>Marketing</span><small>(12)</small></label>
+						<label><input type="checkbox" name="category" value="health"><span>Health &amp; Science</span><small>(10)</small></label>
+					</fieldset>
+					<fieldset class="filter-group">
+						<legend>Level <span>⌃</span></legend>
+						<label><input type="checkbox" name="level" value="all" checked><span>All Levels</span></label>
+						<label><input type="checkbox" name="level" value="beginner"><span>Beginner</span></label>
+						<label><input type="checkbox" name="level" value="intermediate"><span>Intermediate</span></label>
+						<label><input type="checkbox" name="level" value="advanced"><span>Advanced</span></label>
+					</fieldset>
+					<fieldset class="filter-group">
+						<legend>Price <span>⌃</span></legend>
+						<label><input type="checkbox" name="price" value="all" checked><span>All</span></label>
+						<label><input type="checkbox" name="price" value="free"><span>Free</span></label>
+						<label><input type="checkbox" name="price" value="paid"><span>Paid</span></label>
+					</fieldset>
+					<fieldset class="filter-group duration-group">
+						<legend>Duration <span>⌃</span></legend>
+						<input id="duration-filter" type="range" min="0" max="100" value="100" aria-label="Maximum course duration in hours">
+						<div class="range-labels"><span>0 hours</span><span id="duration-value">100+ hours</span></div>
+					</fieldset>
+					<details class="filter-group ratings-group">
+						<summary>Ratings <span>⌄</span></summary>
+						<label><input type="checkbox" name="rating" value="4"><span>★★★★☆ &amp; up</span></label>
+						<label><input type="checkbox" name="rating" value="4.5"><span>★★★★★ 4.5 &amp; up</span></label>
+					</details>
+				</aside>
+
+				<section class="course-results" aria-labelledby="results-title">
+					<div class="results-heading">
+						<div><h2 id="results-title">Top Courses for You</h2><p>Explore our most popular and highest rated courses</p></div>
+						<div class="results-controls">
+							<label class="sort-control">Sort by
+								<select id="course-sort" aria-label="Sort courses">
+									<option value="popular">Most Popular</option>
+									<option value="rating">Highest Rated</option>
+									<option value="price-low">Price: Low to High</option>
+									<option value="price-high">Price: High to Low</option>
+								</select>
+							</label>
+							<div class="view-toggle" aria-label="Course layout">
+								<button class="view-button active" type="button" aria-label="Grid view" data-view="grid">▦</button>
+								<button class="view-button" type="button" aria-label="List view" data-view="list">☷</button>
+							</div>
+						</div>
+					</div>
+					<p class="no-results" hidden>No courses match these filters. Try changing your search or filters.</p>
+					<div class="course-grid" id="course-grid">
+						<article class="course-card" data-category="technology" data-level="beginner" data-price="paid" data-duration="12" data-rating="4.8" data-popularity="12500" data-price-value="2500">
+							<div class="course-art python-art"><span class="bestseller">Bestseller</span><button class="favorite-button" type="button" aria-label="Save Python for Beginners">♡</button><span class="art-logo python-logo">Py</span><span class="art-caption">PYTHON<br>CODE</span><span class="duration-badge">◷ 12h 30m</span></div>
+							<div class="course-info"><h3>Python for Beginners</h3><p class="course-subtitle">Learn Python with Projects</p><p class="instructor"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&amp;fit=crop&amp;w=48&amp;q=75" alt="">Hasan Mahmud</p><div class="course-meta"><span class="rating">★ 4.8 <small>(2.1k)</small></span><span>12.5k enrolled</span></div><div class="course-footer"><strong>৳2,500 <del>৳4,000</del></strong><a th:href="@{/registration}">Enroll Now</a></div></div>
+						</article>
+						<article class="course-card" data-category="technology" data-level="intermediate" data-price="paid" data-duration="15" data-rating="4.7" data-popularity="9300" data-price-value="2800">
+							<div class="course-art react-art"><span class="bestseller">Bestseller</span><button class="favorite-button" type="button" aria-label="Save React Development">♡</button><span class="art-logo react-logo">⚛</span><span class="art-caption">BUILD<br>FOR WEB</span><span class="duration-badge">◷ 15h 20m</span></div>
+							<div class="course-info"><h3>React Development</h3><p class="course-subtitle">Build Modern Web Applications</p><p class="instructor"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&amp;fit=crop&amp;w=48&amp;q=75" alt="">Nusrat Jahan</p><div class="course-meta"><span class="rating">★ 4.7 <small>(1.8k)</small></span><span>9.3k enrolled</span></div><div class="course-footer"><strong>৳2,800 <del>৳4,500</del></strong><a th:href="@{/registration}">Enroll Now</a></div></div>
+						</article>
+						<article class="course-card" data-category="design" data-level="beginner" data-price="paid" data-duration="10" data-rating="4.6" data-popularity="6700" data-price-value="2200">
+							<div class="course-art design-art"><button class="favorite-button" type="button" aria-label="Save UI/UX Design for Beginners">♡</button><span class="art-logo figma-logo">F</span><span class="design-card-one">Aa<br><small>Design beautifully</small></span><span class="duration-badge">◷ 10h 15m</span></div>
+							<div class="course-info"><h3>UI/UX Design for Beginners</h3><p class="course-subtitle">Design Beautiful User Experiences</p><p class="instructor"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=crop&amp;w=48&amp;q=75" alt="">Sadia Rahman</p><div class="course-meta"><span class="rating">★ 4.6 <small>(1.1k)</small></span><span>6.7k enrolled</span></div><div class="course-footer"><strong>৳2,200 <del>৳3,500</del></strong><a th:href="@{/registration}">Enroll Now</a></div></div>
+						</article>
+						<article class="course-card" data-category="marketing" data-level="beginner" data-price="paid" data-duration="8" data-rating="4.8" data-popularity="15100" data-price-value="2000">
+							<div class="course-art marketing-art"><button class="favorite-button" type="button" aria-label="Save Digital Marketing Mastery">♡</button><span class="art-logo megaphone">📣</span><span class="campaign-card">REACH<br><strong>MORE</strong></span><span class="duration-badge">◷ 8h 40m</span></div>
+							<div class="course-info"><h3>Digital Marketing Mastery</h3><p class="course-subtitle">Grow Your Business Online</p><p class="instructor"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&amp;fit=crop&amp;w=48&amp;q=75" alt="">Rafiq Ahmed</p><div class="course-meta"><span class="rating">★ 4.8 <small>(3.2k)</small></span><span>15.1k enrolled</span></div><div class="course-footer"><strong>৳2,000 <del>৳3,200</del></strong><a th:href="@{/registration}">Enroll Now</a></div></div>
+						</article>
+						<article class="course-card" data-category="technology" data-level="intermediate" data-price="paid" data-duration="14" data-rating="4.7" data-popularity="8400" data-price-value="2600">
+							<div class="course-art flutter-art"><button class="favorite-button" type="button" aria-label="Save Flutter App Development">♡</button><span class="art-logo flutter-logo">◢</span><span class="phone-art">▣</span><span class="duration-badge">◷ 14h 25m</span></div>
+							<div class="course-info"><h3>Flutter App Development</h3><p class="course-subtitle">Build Cross-Platform Apps</p><p class="instructor"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&amp;fit=crop&amp;w=48&amp;q=75" alt="">Tanzim Hasan</p><div class="course-meta"><span class="rating">★ 4.7 <small>(1.9k)</small></span><span>8.4k enrolled</span></div><div class="course-footer"><strong>৳2,600 <del>৳4,000</del></strong><a th:href="@{/registration}">Enroll Now</a></div></div>
+						</article>
+						<article class="course-card" data-category="technology" data-level="advanced" data-price="paid" data-duration="18" data-rating="4.6" data-popularity="5200" data-price-value="3500">
+							<div class="course-art data-art"><button class="favorite-button" type="button" aria-label="Save Data Science with Python">♡</button><span class="art-logo data-logo">Py</span><span class="data-chart"><i></i><i></i><i></i><i></i><i></i></span><span class="duration-badge">◷ 18h 10m</span></div>
+							<div class="course-info"><h3>Data Science with Python</h3><p class="course-subtitle">From Basics to Real Projects</p><p class="instructor"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&amp;fit=crop&amp;w=48&amp;q=75" alt="">Dr. Mehedi Hasan</p><div class="course-meta"><span class="rating">★ 4.6 <small>(980)</small></span><span>5.2k enrolled</span></div><div class="course-footer"><strong>৳3,500 <del>৳5,500</del></strong><a th:href="@{/registration}">Enroll Now</a></div></div>
+						</article>
+						<article class="course-card" data-category="design" data-level="intermediate" data-price="paid" data-duration="12" data-rating="4.7" data-popularity="7800" data-price-value="2400">
+							<div class="course-art graphic-art"><button class="favorite-button" type="button" aria-label="Save Graphic Design Masterclass">♡</button><span class="tool-badge">Ps</span><span class="tool-badge ai-badge">Ai</span><span class="graphic-shape">✿</span><span class="duration-badge">◷ 12h 0m</span></div>
+							<div class="course-info"><h3>Graphic Design Masterclass</h3><p class="course-subtitle">Design for Real World</p><p class="instructor"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=crop&amp;w=48&amp;q=75" alt="">Nabila Karim</p><div class="course-meta"><span class="rating">★ 4.7 <small>(1.4k)</small></span><span>7.8k enrolled</span></div><div class="course-footer"><strong>৳2,400 <del>৳3,800</del></strong><a th:href="@{/registration}">Enroll Now</a></div></div>
+						</article>
+						<article class="course-card" data-category="technology" data-level="advanced" data-price="paid" data-duration="20" data-rating="4.8" data-popularity="11300" data-price-value="3000">
+							<div class="course-art web-art"><button class="favorite-button" type="button" aria-label="Save Web Development (MERN)">♡</button><span class="web-logos"><i>◆</i><i>ex</i><i>⚛</i><i>JS</i></span><span class="duration-badge">◷ 20h 15m</span></div>
+							<div class="course-info"><h3>Web Development (MERN)</h3><p class="course-subtitle">Build Full Stack Applications</p><p class="instructor"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&amp;fit=crop&amp;w=48&amp;q=75" alt="">Arman Hossain</p><div class="course-meta"><span class="rating">★ 4.8 <small>(2.6k)</small></span><span>11.3k enrolled</span></div><div class="course-footer"><strong>৳3,000 <del>৳5,000</del></strong><a th:href="@{/registration}">Enroll Now</a></div></div>
+						</article>
+					</div>
+				</section>
+			</div>
+		</main>
+	</div>
+	<script>
+		const menuToggle = document.querySelector('.menu-toggle');
+		const sidebar = document.querySelector('#sidebar');
+		const searchInput = document.querySelector('#course-search');
+		const courseGrid = document.querySelector('#course-grid');
+		const courseCards = [...courseGrid.querySelectorAll('.course-card')];
+		const noResults = document.querySelector('.no-results');
+		const durationInput = document.querySelector('#duration-filter');
+		let activeCategory = 'all';
+
+		function filterCourses() {
+			const query = searchInput.value.trim().toLowerCase();
+			const categories = [...document.querySelectorAll('input[name="category"]:checked')].map((input) => input.value).filter((value) => value !== 'all');
+			const levels = [...document.querySelectorAll('input[name="level"]:checked')].map((input) => input.value).filter((value) => value !== 'all');
+			const prices = [...document.querySelectorAll('input[name="price"]:checked')].map((input) => input.value).filter((value) => value !== 'all');
+			const ratings = [...document.querySelectorAll('input[name="rating"]:checked')].map((input) => Number(input.value));
+			let visibleCount = 0;
+
+			courseCards.forEach((card) => {
+				const matches = (!query || card.textContent.toLowerCase().includes(query))
+					&& (activeCategory === 'all' || card.dataset.category === activeCategory)
+					&& (!categories.length || categories.includes(card.dataset.category))
+					&& (!levels.length || levels.includes(card.dataset.level))
+					&& (!prices.length || prices.includes(card.dataset.price))
+					&& Number(card.dataset.duration) <= Number(durationInput.value)
+					&& (!ratings.length || ratings.some((rating) => Number(card.dataset.rating) >= rating));
+				card.hidden = !matches;
+				if (matches) visibleCount += 1;
+			});
+			noResults.hidden = visibleCount > 0;
+		}
+
+		document.querySelectorAll('.category-chip').forEach((button) => {
+			button.addEventListener('click', () => {
+				activeCategory = button.dataset.category;
+				document.querySelectorAll('.category-chip').forEach((chip) => chip.classList.toggle('active', chip === button));
+				document.querySelectorAll('input[name="category"]').forEach((input) => {
+					input.checked = input.value === 'all' ? activeCategory === 'all' : input.value === activeCategory;
+				});
+				filterCourses();
+			});
+		});
+
+		document.querySelectorAll('.filter-panel input[type="checkbox"]').forEach((input) => input.addEventListener('change', () => {
+			if (input.name === 'category' && input.checked) {
+				if (input.value === 'all') {
+					document.querySelectorAll('input[name="category"]:not([value="all"])').forEach((option) => { option.checked = false; });
+					activeCategory = 'all';
+					document.querySelectorAll('.category-chip').forEach((chip) => chip.classList.toggle('active', chip.dataset.category === 'all'));
+				} else {
+					activeCategory = 'all';
+					document.querySelector('input[name="category"][value="all"]').checked = false;
+					document.querySelectorAll('.category-chip').forEach((chip) => chip.classList.toggle('active', chip.dataset.category === 'all'));
+				}
+			} else if (input.checked && input.value === 'all') {
+				document.querySelectorAll(`input[name="${input.name}"]:not([value="all"])`).forEach((option) => { option.checked = false; });
+			} else if (input.checked) {
+				document.querySelector(`input[name="${input.name}"][value="all"]`).checked = false;
+			}
+			filterCourses();
+		}));
+		searchInput.addEventListener('input', filterCourses);
+		durationInput.addEventListener('input', () => {
+			document.querySelector('#duration-value').textContent = Number(durationInput.value) === 100 ? '100+ hours' : `${durationInput.value} hours`;
+			filterCourses();
+		});
+
+		document.querySelector('#course-sort').addEventListener('change', (event) => {
+			const sortBy = event.target.value;
+			courseCards.sort((first, second) => {
+				if (sortBy === 'rating') return Number(second.dataset.rating) - Number(first.dataset.rating);
+				if (sortBy === 'price-low') return Number(first.dataset.priceValue) - Number(second.dataset.priceValue);
+				if (sortBy === 'price-high') return Number(second.dataset.priceValue) - Number(first.dataset.priceValue);
+				return Number(second.dataset.popularity) - Number(first.dataset.popularity);
+			}).forEach((card) => courseGrid.append(card));
+		});
+
+		document.querySelectorAll('.view-button').forEach((button) => {
+			button.addEventListener('click', () => {
+				const isList = button.dataset.view === 'list';
+				courseGrid.classList.toggle('list-view', isList);
+				document.querySelectorAll('.view-button').forEach((view) => view.classList.toggle('active', view === button));
+			});
+		});
+
+		document.querySelectorAll('.favorite-button').forEach((button) => {
+			button.addEventListener('click', () => {
+				const saved = button.classList.toggle('saved');
+				button.textContent = saved ? '♥' : '♡';
+				button.setAttribute('aria-pressed', String(saved));
+			});
+		});
+
+		document.querySelector('#reset-filters').addEventListener('click', () => {
+			document.querySelectorAll('.filter-panel input[type="checkbox"]').forEach((input) => {
+				input.checked = input.value === 'all';
+			});
+			searchInput.value = '';
+			durationInput.value = '100';
+			document.querySelector('#duration-value').textContent = '100+ hours';
+			activeCategory = 'all';
+			document.querySelectorAll('.category-chip').forEach((chip) => chip.classList.toggle('active', chip.dataset.category === 'all'));
+			filterCourses();
+		});
+
+		document.querySelector('[data-scroll-filters]').addEventListener('click', () => {
+			document.querySelector('#filters').scrollIntoView({ behavior: 'smooth', block: 'center' });
+		});
+
+		menuToggle.addEventListener('click', () => {
+			const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+			menuToggle.setAttribute('aria-expanded', String(!isOpen));
+			sidebar.classList.toggle('is-open', !isOpen);
+		});
+	</script>
+</body>
+</html>

@@ -27,6 +27,11 @@ public class HomeController {
 		return "dashboard";
 	}
 
+	@GetMapping("/explore")
+	public String explore() {
+		return "explore";
+	}
+
 	@GetMapping({ "/mycourses", "/my-courses" })
 	public String myCourses() {
 		return "my-courses";
