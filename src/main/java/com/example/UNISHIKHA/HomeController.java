@@ -27,6 +27,11 @@ public class HomeController {
 		return "dashboard";
 	}
 
+	@GetMapping({ "/live-class", "/liveclass" })
+	public String liveClass() {
+		return "live-class";
+	}
+
 	@GetMapping("/explore")
 	public String explore() {
 		return "explore";

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#111d31">
+	<meta name="description" content="Join your UniShikha live class.">
+	<title>Live Class | UniShikha</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" th:href="@{/css/live-class.css}">
+</head>
+<body>
+	<div class="app-shell">
+		<aside class="sidebar">
+			<a class="brand" th:href="@{/dashboard}" aria-label="UniShikha dashboard">
+				<svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+					<path d="M4 15 24 5l20 10-20 10L4 15Z" fill="currentColor"/>
+					<path d="M12 20v11c7 7 17 7 24 0V20l-12 6-12-6Z" fill="currentColor" opacity=".78"/>
+					<path d="M43 17v13" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+					<circle cx="43" cy="33" r="2.5" fill="currentColor"/>
+				</svg>
+				<span>UniShikha</span>
+			</a>
+
+			<nav class="side-nav" aria-label="Student navigation">
+				<a class="nav-link" th:href="@{/dashboard}"><span class="nav-icon">⌂</span>Dashboard</a>
+				<a class="nav-link" th:href="@{/mycourses}"><span class="nav-icon">▤</span>My Courses</a>
+				<a class="nav-link active" th:href="@{/live-class}"><span class="nav-icon">▣</span>Live Class</a>
+				<a class="nav-link" href="#upcoming"><span class="nav-icon">☷</span>Assignments</a>
+				<a class="nav-link" href="#resources"><span class="nav-icon">▧</span>Quizzes</a>
+				<a class="nav-link" href="#resources"><span class="nav-icon">▤</span>Notes</a>
+				<a class="nav-link" href="#chat-panel"><span class="nav-icon">☏</span>Messages</a>
+				<a class="nav-link" th:href="@{/login}"><span class="nav-icon">♙</span>Profile</a>
+				<a class="nav-link" th:href="@{/login}"><span class="nav-icon">⚙</span>Settings</a>
+			</nav>
+
+			<a class="nav-link logout-link" th:href="@{/login}"><span class="nav-icon">⇥</span>Logout</a>
+		</aside>
+
+		<main class="main-content">
+			<header class="page-header">
+				<div>
+					<p class="eyebrow">YOUR CLASSROOM</p>
+					<h1>Live Class</h1>
+					<div class="breadcrumbs"><a th:href="@{/dashboard}">Home</a><span>›</span><span>Live Class</span><span>›</span><span>Python for Beginners</span></div>
+				</div>
+				<div class="header-actions">
+					<button class="notification-button" type="button" aria-label="Notifications">♧<i></i></button>
+					<div class="profile-avatar">TA</div>
+					<div class="profile-name"><strong>Tanzim Ahmed</strong><span>Student</span></div>
+					<button class="profile-menu" type="button" aria-label="Profile menu">⌄</button>
+				</div>
+			</header>
+
+			<section class="class-info" aria-label="Class information">
+				<div class="python-logo" aria-hidden="true"><span>Py</span></div>
+				<div class="class-title">
+					<h2>Python for Beginners</h2>
+					<p>Instructor: Tanvir Rahman <span>•</span> Live Class</p>
+				</div>
+				<div class="class-detail"><span class="detail-icon">▦</span><span>Sun, 25 Oct 2026</span></div>
+				<div class="class-detail"><span class="detail-icon">◷</span><span>09:00 PM - 10:00 PM</span></div>
+				<div class="class-detail"><span class="detail-icon">♙</span><span>48 students online</span></div>
+				<span class="live-badge"><i></i>LIVE</span>
+			</section>
+
+			<div class="class-layout">
+				<section class="class-stage" aria-label="Live class video">
+					<div class="video-frame">
+						<img class="lesson-image" src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?auto=format&amp;fit=crop&amp;w=1400&amp;q=85" alt="Python lesson displayed on a computer screen">
+						<div class="lesson-overlay">
+							<span class="lesson-live"><i></i> LIVE SESSION</span>
+							<div class="lesson-caption">
+								<span>PYTHON · CONDITIONALS</span>
+								<strong>If / Else Statements</strong>
+								<p>Make decisions in your code with conditional logic.</p>
+							</div>
+						</div>
+						<button class="fullscreen-button" type="button" aria-label="Toggle fullscreen">⛶</button>
+					</div>
+
+					<div class="participant-strip" aria-label="Class participants">
+						<div class="participant-card instructor-card">
+							<img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&amp;fit=crop&amp;w=160&amp;q=80" alt="">
+							<span class="participant-mute">♩</span><span class="participant-name">Tanvir Rahman</span>
+						</div>
+						<div class="participant-card">
+							<img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=crop&amp;w=160&amp;q=80" alt="">
+							<span class="participant-mute">♩</span><span class="participant-name">Sadia</span>
+						</div>
+						<div class="participant-card">
+							<img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&amp;fit=crop&amp;w=160&amp;q=80" alt="">
+							<span class="participant-mute">♩</span><span class="participant-name">Rafi</span>
+						</div>
+						<div class="participant-card">
+							<img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&amp;fit=crop&amp;w=160&amp;q=80" alt="">
+							<span class="participant-mute">♩</span><span class="participant-name">Nusrat</span>
+						</div>
+						<div class="participant-card">
+							<img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&amp;fit=crop&amp;w=160&amp;q=80" alt="">
+							<span class="participant-mute">♩</span><span class="participant-name">Arafat</span>
+						</div>
+						<button class="more-participants" type="button">+43<span>more</span></button>
+					</div>
+
+					<div class="class-controls">
+						<button class="control-button toggle-control" type="button" aria-pressed="false"><span class="control-icon">🎙</span><span>Mic</span></button>
+						<button class="control-button toggle-control" type="button" aria-pressed="false"><span class="control-icon">▣</span><span>Camera</span></button>
+						<button class="control-button" type="button"><span class="control-icon">▣</span><span>Share</span></button>
+						<button class="control-button" type="button"><span class="control-icon">♟</span><span>Participants</span></button>
+						<button class="control-button" type="button"><span class="control-icon">•••</span><span>More</span></button>
+						<button class="leave-button" type="button"><span>☎</span>Leave Class</button>
+					</div>
+				</section>
+
+				<aside class="side-panel" id="chat-panel">
+					<div class="panel-tabs" role="tablist" aria-label="Class panel">
+						<button class="panel-tab active" type="button" role="tab" aria-selected="true" data-panel="chat">Live Chat</button>
+						<button class="panel-tab" type="button" role="tab" aria-selected="false" data-panel="resources">Class Resources</button>
+					</div>
+					<div class="chat-content" id="chat-content" role="tabpanel">
+						<div class="chat-list" aria-live="polite">
+							<article class="chat-message"><span class="chat-avatar purple">SR</span><div class="message-copy"><div><strong>Sadia Rahman</strong><time>09:12 PM</time></div><p>Sir, elif এর একটা example দেখাবেন?</p></div></article>
+							<article class="chat-message"><span class="chat-avatar blue">TM</span><div class="message-copy"><div><strong>Tanvir Mahmud</strong><time>09:13 PM</time></div><p>এটা practical use কোথায় হয়?</p></div></article>
+							<article class="chat-message"><span class="chat-avatar red">NJ</span><div class="message-copy"><div><strong>Nusrat Jahan</strong><time>09:14 PM</time></div><p>Codeটা কি share করবেন?</p></div></article>
+							<article class="chat-message"><span class="chat-avatar green">AH</span><div class="message-copy"><div><strong>Arafat Hossain</strong><time>09:15 PM</time></div><p>Sir, nested if কিভাবে কাজ করে?</p></div></article>
+							<article class="chat-message"><span class="chat-avatar pink">FA</span><div class="message-copy"><div><strong>Fahim Ahmed</strong><time>09:16 PM</time></div><p>দারুণভাবে বুঝিয়েছেন স্যার 👍</p></div></article>
+						</div>
+						<form class="chat-form" id="chat-form">
+							<label class="sr-only" for="chat-input">Type a message</label>
+							<input id="chat-input" type="text" placeholder="Type a message..." autocomplete="off">
+							<button class="emoji-button" type="button" aria-label="Add emoji">☺</button>
+							<button class="send-button" type="submit" aria-label="Send message">➤</button>
+						</form>
+					</div>
+					<div class="resources-content" id="resources" role="tabpanel" hidden>
+						<p class="resource-intro">Materials shared by your instructor</p>
+						<a class="resource-item" href="#upcoming"><span class="resource-icon pdf">PDF</span><span><strong>Python conditionals</strong><small>Lesson notes · 2.4 MB</small></span><b>↓</b></a>
+						<a class="resource-item" href="#upcoming"><span class="resource-icon code">&lt;/&gt;</span><span><strong>if-else examples</strong><small>Python file · 4 KB</small></span><b>↓</b></a>
+						<a class="resource-item" href="#upcoming"><span class="resource-icon link">↗</span><span><strong>Practice exercises</strong><small>External resource</small></span><b>↗</b></a>
+						<div class="resource-note"><strong>Need help?</strong><span>Ask your question in Live Chat and your instructor will help.</span></div>
+					</div>
+				</aside>
+			</div>
+
+			<section class="upcoming-section" id="upcoming">
+				<div class="section-heading"><div><h2>Upcoming Live Classes</h2><p>Keep learning with your next sessions</p></div><a href="#upcoming">View All <span>→</span></a></div>
+				<div class="upcoming-grid">
+					<article class="upcoming-card">
+						<div class="date-tile"><span>OCT</span><strong>28</strong></div>
+						<div class="upcoming-details"><h3>Functions in Python</h3><p>09:00 PM - 10:00 PM</p><div class="instructor"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&amp;fit=crop&amp;w=64&amp;q=80" alt="">Tanvir Rahman</div><button class="calendar-button" type="button">▦ <span>Add to Calendar</span></button></div>
+					</article>
+					<article class="upcoming-card">
+						<div class="date-tile"><span>OCT</span><strong>30</strong></div>
+						<div class="upcoming-details"><h3>Lists and Tuples</h3><p>09:00 PM - 10:00 PM</p><div class="instructor"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&amp;fit=crop&amp;w=64&amp;q=80" alt="">Tanvir Rahman</div><button class="calendar-button" type="button">▦ <span>Add to Calendar</span></button></div>
+					</article>
+					<article class="upcoming-card">
+						<div class="date-tile"><span>NOV</span><strong>02</strong></div>
+						<div class="upcoming-details"><h3>File Handling in Python</h3><p>09:00 PM - 10:00 PM</p><div class="instructor"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&amp;fit=crop&amp;w=64&amp;q=80" alt="">Tanvir Rahman</div><button class="calendar-button" type="button">▦ <span>Add to Calendar</span></button></div>
+					</article>
+				</div>
+			</section>
+			<footer class="page-footer">© 2026 UniShikha <span>•</span> Learn together, grow together.</footer>
+		</main>
+	</div>
+
+	<script>
+		const tabs = document.querySelectorAll('.panel-tab');
+		const chatContent = document.querySelector('#chat-content');
+		const resourcesContent = document.querySelector('#resources');
+
+		tabs.forEach((tab) => tab.addEventListener('click', () => {
+			const showChat = tab.dataset.panel === 'chat';
+			tabs.forEach((item) => {
+				const active = item === tab;
+				item.classList.toggle('active', active);
+				item.setAttribute('aria-selected', String(active));
+			});
+			chatContent.hidden = !showChat;
+			resourcesContent.hidden = showChat;
+		}));
+
+		document.querySelectorAll('.toggle-control').forEach((button) => {
+			button.addEventListener('click', () => {
+				const enabled = button.getAttribute('aria-pressed') !== 'true';
+				button.setAttribute('aria-pressed', String(enabled));
+				button.classList.toggle('is-off', enabled);
+			});
+		});
+
+		document.querySelector('#chat-form').addEventListener('submit', (event) => {
+			event.preventDefault();
+			const input = document.querySelector('#chat-input');
+			const text = input.value.trim();
+			if (!text) return;
+			const message = document.createElement('article');
+			message.className = 'chat-message own-message';
+			message.innerHTML = '<span class="chat-avatar own">TA</span><div class="message-copy"><div><strong>You</strong><time>Now</time></div></div>';
+			const paragraph = document.createElement('p');
+			paragraph.textContent = text;
+			message.querySelector('.message-copy').append(paragraph);
+			document.querySelector('.chat-list').append(message);
+			input.value = '';
+			message.scrollIntoView({ block: 'nearest' });
+		});
+
+		document.querySelectorAll('.calendar-button').forEach((button) => {
+			button.addEventListener('click', () => {
+				button.classList.toggle('added');
+				button.querySelector('span').textContent = button.classList.contains('added') ? 'Added to Calendar' : 'Add to Calendar';
+			});
+		});
+
+		document.querySelector('.leave-button').addEventListener('click', () => {
+			if (window.confirm('Are you sure you want to leave this class?')) {
+				window.location.href = '/dashboard';
+			}
+		});
+
+		document.querySelector('.fullscreen-button').addEventListener('click', () => {
+			const videoFrame = document.querySelector('.video-frame');
+			if (!document.fullscreenElement) {
+				videoFrame.requestFullscreen();
+			} else {
+				document.exitFullscreen();
+			}
+		});
+	</script>
+</body>
+</html>
