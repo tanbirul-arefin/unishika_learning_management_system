@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#111d31">
+	<meta name="description" content="View, download, verify, and share your UniShikha certificates.">
+	<title>My Certificates | UniShikha</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" th:href="@{/css/mycertificate.css}">
+</head>
+<body>
+	<div class="app-shell">
+		<aside class="sidebar">
+			<a class="brand" th:href="@{/dashboard}" aria-label="UniShikha dashboard">
+				<svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+					<path d="M4 15 24 5l20 10-20 10L4 15Z" fill="currentColor"/>
+					<path d="M12 20v11c7 7 17 7 24 0V20l-12 6-12-6Z" fill="currentColor" opacity=".78"/>
+					<path d="M43 17v13" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+					<circle cx="43" cy="33" r="2.5" fill="currentColor"/>
+				</svg>
+				<span>UniShikha<small>Learn · Build · Grow</small></span>
+			</a>
+			<nav class="side-nav" aria-label="Student navigation">
+				<a class="nav-link" th:href="@{/dashboard}"><span class="nav-icon">⌂</span>Dashboard</a>
+				<a class="nav-link" th:href="@{/mycourses}"><span class="nav-icon">▤</span>My Courses</a>
+				<a class="nav-link" th:href="@{/explore}"><span class="nav-icon">◎</span>Explore</a>
+				<a class="nav-link" th:href="@{/live-class}"><span class="nav-icon">▣</span>Live Classes</a>
+				<a class="nav-link" th:href="@{/assignments}"><span class="nav-icon">☷</span>Assignments</a>
+				<a class="nav-link" th:href="@{/quizzes}"><span class="nav-icon">☑</span>Quizzes</a>
+				<a class="nav-link" th:href="@{/myprojects}"><span class="nav-icon">◇</span>Projects</a>
+				<a class="nav-link" th:href="@{/community}"><span class="nav-icon">♧</span>Community</a>
+				<a class="nav-link active" th:href="@{/mycertificate}"><span class="nav-icon">♢</span>Certificates</a>
+				<a class="nav-link" th:href="@{/mycourses}"><span class="nav-icon">▤</span>Notes</a>
+				<a class="nav-link" th:href="@{/dashboard}"><span class="nav-icon">▦</span>Calendar</a>
+				<a class="nav-link" th:href="@{/login}"><span class="nav-icon">☏</span>Messages</a>
+			</nav>
+			<a class="nav-link logout-link" th:href="@{/login}"><span class="nav-icon">⇥</span>Log out</a>
+		</aside>
+
+		<main class="main-content">
+			<header class="topbar">
+				<button class="menu-button" id="menu-button" type="button" aria-label="Go to certificate list">☰</button>
+				<label class="search-box"><span aria-hidden="true">⌕</span><input id="certificate-search" type="search" placeholder="Search courses, certificates, or anything..." aria-label="Search certificates"></label>
+				<div class="topbar-actions">
+					<button class="notification-button" id="notification-button" type="button" aria-label="Go to recent certificates">♧<i></i></button>
+					<div class="profile-avatar">AH</div>
+					<strong class="profile-name">Arafat Hossain</strong>
+					<a class="profile-menu" th:href="@{/login}" aria-label="Profile and account settings">⌄</a>
+				</div>
+			</header>
+
+			<section class="page-heading" id="certificates-top">
+				<div><h1>My Certificates</h1><p>View, download and share your course completion certificates.</p></div>
+				<a class="verify-top-button" href="#verify-certificate"><span>▣</span> Verify Certificate</a>
+			</section>
+
+			<nav class="certificate-filters" role="tablist" aria-label="Filter certificates">
+				<button class="filter-tab active" type="button" role="tab" aria-selected="true" data-filter="all">All Certificates <span>(5)</span></button>
+				<button class="filter-tab" type="button" role="tab" aria-selected="false" data-filter="course">Course Certificates <span>(4)</span></button>
+				<button class="filter-tab" type="button" role="tab" aria-selected="false" data-filter="project">Project Certificates <span>(1)</span></button>
+				<button class="filter-tab" type="button" role="tab" aria-selected="false" data-filter="achievement">Achievement Badges <span>(3)</span></button>
+			</nav>
+
+			<div class="certificates-layout">
+				<section class="certificate-content" aria-label="Certificate collection">
+					<article class="achievement-banner">
+						<div><h2>Keep Learning, Keep Achieving!</h2><p>Complete more courses and unlock certificates to showcase your skills.</p><a href="#certificate-grid">Explore your certificates <span>→</span></a></div>
+						<div class="banner-art" aria-hidden="true"><span class="banner-cap">◆</span><span class="banner-trophy">🏆</span><i class="confetti confetti-one">✦</i><i class="confetti confetti-two">◆</i><i class="confetti confetti-three">✦</i><i class="confetti confetti-four">◆</i></div>
+					</article>
+
+					<div class="certificate-grid" id="certificate-grid">
+						<article class="certificate-card" data-type="course" data-title="Python for Beginners" data-date="Oct 30, 2026" data-id="US-2026-PY-10482" data-description="Successfully completed the Python for Beginners course.">
+							<a class="certificate-preview course-preview" href="#certificate-detail" data-open-certificate aria-label="View Python for Beginners certificate"><span class="preview-corner corner-tl"></span><span class="preview-corner corner-tr"></span><span class="preview-corner corner-bl"></span><span class="preview-corner corner-br"></span><span class="preview-logo">🎓 <b>UniShikha</b></span><small>Certificate of Completion</small><strong>Python for Beginners</strong><span class="preview-recipient">Arafat Hossain</span><small>Has successfully completed the course</small><span class="preview-seal">✹</span><span class="preview-signature">〰〰〰<small>Course Instructor</small></span></a>
+							<div class="certificate-info"><div class="certificate-title-row"><h2>Python for Beginners</h2><button class="more-button" type="button" aria-label="More options for Python for Beginners">•••</button></div><span class="type-badge course-badge">Course Certificate</span><p class="certificate-date">▦ &nbsp;Oct 30, 2026</p><div class="certificate-actions"><button class="view-button" type="button" data-open-certificate>View</button><button class="download-button" type="button" data-download>↓ &nbsp;Download</button></div></div>
+						</article>
+
+						<article class="certificate-card" data-type="course" data-title="React Web Development" data-date="Sep 15, 2026" data-id="US-2026-RE-09831" data-description="Successfully completed the React Web Development course.">
+							<a class="certificate-preview course-preview" href="#certificate-detail" data-open-certificate aria-label="View React Web Development certificate"><span class="preview-corner corner-tl"></span><span class="preview-corner corner-tr"></span><span class="preview-corner corner-bl"></span><span class="preview-corner corner-br"></span><span class="preview-logo">🎓 <b>UniShikha</b></span><small>Certificate of Completion</small><strong>React Web Development</strong><span class="preview-recipient">Arafat Hossain</span><small>Has successfully completed the course</small><span class="preview-seal">✹</span><span class="preview-signature">〰〰〰<small>Course Instructor</small></span></a>
+							<div class="certificate-info"><div class="certificate-title-row"><h2>React Web Development</h2><button class="more-button" type="button" aria-label="More options for React Web Development">•••</button></div><span class="type-badge course-badge">Course Certificate</span><p class="certificate-date">▦ &nbsp;Sep 15, 2026</p><div class="certificate-actions"><button class="view-button" type="button" data-open-certificate>View</button><button class="download-button" type="button" data-download>↓ &nbsp;Download</button></div></div>
+						</article>
+
+						<article class="certificate-card" data-type="course" data-title="Flutter Mobile Application" data-date="Aug 10, 2026" data-id="US-2026-FL-08724" data-description="Successfully completed the Flutter Mobile Application course.">
+							<a class="certificate-preview course-preview" href="#certificate-detail" data-open-certificate aria-label="View Flutter Mobile Application certificate"><span class="preview-corner corner-tl"></span><span class="preview-corner corner-tr"></span><span class="preview-corner corner-bl"></span><span class="preview-corner corner-br"></span><span class="preview-logo">🎓 <b>UniShikha</b></span><small>Certificate of Completion</small><strong>Flutter Mobile Application</strong><span class="preview-recipient">Arafat Hossain</span><small>Has successfully completed the course</small><span class="preview-seal">✹</span><span class="preview-signature">〰〰〰<small>Course Instructor</small></span></a>
+							<div class="certificate-info"><div class="certificate-title-row"><h2>Flutter Mobile Application</h2><button class="more-button" type="button" aria-label="More options for Flutter Mobile Application">•••</button></div><span class="type-badge course-badge">Course Certificate</span><p class="certificate-date">▦ &nbsp;Aug 10, 2026</p><div class="certificate-actions"><button class="view-button" type="button" data-open-certificate>View</button><button class="download-button" type="button" data-download>↓ &nbsp;Download</button></div></div>
+						</article>
+
+						<article class="certificate-card" data-type="project" data-title="Student Management System" data-date="Dec 1, 2026" data-id="US-2026-PR-12365" data-description="Successfully completed the Student Management System project.">
+							<a class="certificate-preview project-preview" href="#certificate-detail" data-open-certificate aria-label="View Student Management System project certificate"><span class="preview-corner corner-tl"></span><span class="preview-corner corner-tr"></span><span class="preview-corner corner-bl"></span><span class="preview-corner corner-br"></span><span class="preview-logo">🎓 <b>UniShikha</b></span><small>Certificate of Project Completion</small><strong>Student Management System</strong><span class="preview-recipient">Arafat Hossain</span><small>Has successfully completed the project</small><span class="preview-seal">✹</span><span class="preview-signature">〰〰〰<small>Project Mentor</small></span></a>
+							<div class="certificate-info"><div class="certificate-title-row"><h2>Student Management System</h2><button class="more-button" type="button" aria-label="More options for Student Management System">•••</button></div><span class="type-badge project-badge">Project Certificate</span><p class="certificate-date">▦ &nbsp;Dec 1, 2026</p><div class="certificate-actions"><button class="view-button" type="button" data-open-certificate>View</button><button class="download-button" type="button" data-download>↓ &nbsp;Download</button></div></div>
+						</article>
+
+						<article class="certificate-card" data-type="achievement" data-title="Top Learner" data-date="Oct 25, 2026" data-id="US-2026-AC-11005" data-description="Awarded for outstanding performance and consistent learning.">
+							<a class="certificate-preview achievement-preview" href="#certificate-detail" data-open-certificate aria-label="View Top Learner achievement badge"><span class="preview-corner corner-tl"></span><span class="preview-corner corner-tr"></span><span class="preview-corner corner-bl"></span><span class="preview-corner corner-br"></span><span class="preview-logo">🎓 <b>UniShikha</b></span><small>Certificate of Achievement</small><strong>Top Learner</strong><span class="preview-recipient">Arafat Hossain</span><small>For outstanding performance and consistent learning</small><span class="preview-seal">★</span><span class="preview-signature">〰〰〰<small>UniShikha</small></span></a>
+							<div class="certificate-info"><div class="certificate-title-row"><h2>Top Learner</h2><button class="more-button" type="button" aria-label="More options for Top Learner">•••</button></div><span class="type-badge achievement-badge">Achievement Badge</span><p class="certificate-date">▦ &nbsp;Oct 25, 2026</p><div class="certificate-actions"><button class="view-button" type="button" data-open-certificate>View</button><button class="download-button" type="button" data-download>↓ &nbsp;Download</button></div></div>
+						</article>
+					</div>
+					<p class="empty-state" id="empty-state" hidden>No certificates match your search or filter.</p>
+				</section>
+
+				<aside class="right-column">
+					<section class="side-card achievement-summary" id="achievement-summary">
+						<div class="side-card-heading"><h2>Your Achievement</h2><a href="#certificates-top" id="view-profile">View Profile</a></div>
+						<div class="achievement-stats">
+							<a class="stat-tile total-stat" href="#certificate-grid" data-stat-filter="all"><span class="stat-icon">♙</span><span><strong>5</strong><small>Total Certificates</small></span></a>
+							<a class="stat-tile course-stat" href="#certificate-grid" data-stat-filter="course"><span class="stat-icon">✓</span><span><strong>4</strong><small>Course Certificates</small></span></a>
+							<a class="stat-tile project-stat" href="#certificate-grid" data-stat-filter="project"><span class="stat-icon">▱</span><span><strong>1</strong><small>Project Certificate</small></span></a>
+							<a class="stat-tile badge-stat" href="#certificate-grid" data-stat-filter="achievement"><span class="stat-icon">★</span><span><strong>3</strong><small>Achievement Badges</small></span></a>
+						</div>
+					</section>
+
+					<section class="side-card verify-card" id="verify-certificate">
+						<h2>Verify Your Certificate</h2>
+						<p>Enter the certificate ID to verify its authenticity.</p>
+						<form class="verify-form" id="verify-form">
+							<label class="sr-only" for="certificate-id">Certificate ID</label>
+							<input id="certificate-id" type="text" placeholder="⌕  Enter Certificate ID (e.g. US-CERT-12345)" autocomplete="off" required>
+							<button type="submit">Verify</button>
+						</form>
+						<p class="verify-result" id="verify-result" aria-live="polite"></p>
+					</section>
+
+					<section class="side-card recent-card" id="recent-certificates">
+						<div class="side-card-heading"><h2>Recent Certificates</h2><a href="#certificate-grid" id="view-all-recent">View All</a></div>
+						<nav class="recent-list" aria-label="Recent certificates">
+							<a class="recent-item" href="#certificate-grid" data-recent="US-2026-PY-10482"><span class="recent-icon python-icon">Py</span><span><strong>Python for Beginners</strong><small>Oct 30, 2026</small></span><b>›</b></a>
+							<a class="recent-item" href="#certificate-grid" data-recent="US-2026-RE-09831"><span class="recent-icon react-icon">⚛</span><span><strong>React Web Development</strong><small>Sep 15, 2026</small></span><b>›</b></a>
+							<a class="recent-item" href="#certificate-grid" data-recent="US-2026-FL-08724"><span class="recent-icon flutter-icon">◀</span><span><strong>Flutter Mobile Application</strong><small>Aug 10, 2026</small></span><b>›</b></a>
+							<a class="recent-item" href="#certificate-grid" data-recent="US-2026-PR-12365"><span class="recent-icon project-icon">▰</span><span><strong>Student Management System</strong><small>Dec 1, 2026</small></span><b>›</b></a>
+							<a class="recent-item" href="#certificate-grid" data-recent="US-2026-AC-11005"><span class="recent-icon badge-icon">★</span><span><strong>Top Learner</strong><small>Oct 25, 2026</small></span><b>›</b></a>
+						</nav>
+					</section>
+				</aside>
+			</div>
+			<footer class="page-footer">© 2026 UniShikha <span>•</span> Learn together, grow together.</footer>
+		</main>
+	</div>
+
+	<dialog class="certificate-dialog" id="certificate-detail" aria-labelledby="dialog-title">
+		<form method="dialog"><button class="dialog-close" aria-label="Close certificate details">×</button></form>
+		<div class="dialog-preview" id="dialog-preview"></div>
+		<h2 id="dialog-title"></h2>
+		<p id="dialog-description"></p>
+		<p class="dialog-certificate-id">Certificate ID: <strong id="dialog-id"></strong></p>
+		<div class="dialog-actions"><button class="view-button" id="print-certificate" type="button">Print</button><button class="download-button" id="dialog-download" type="button">↓ &nbsp;Download</button><button class="share-button" id="share-certificate" type="button">↗ &nbsp;Share</button></div>
+	</dialog>
+
+	<script>
+		const certificateCards = Array.from(document.querySelectorAll('.certificate-card'));
+		const filterTabs = document.querySelectorAll('.filter-tab');
+		let activeFilter = 'all';
+		let selectedCertificate = null;
+		const dialog = document.querySelector('#certificate-detail');
+		const searchInput = document.querySelector('#certificate-search');
+
+		function filterCertificates(filter, selectedTab) {
+			activeFilter = filter;
+			filterTabs.forEach((tab) => {
+				const active = tab === selectedTab;
+				tab.classList.toggle('active', active);
+				tab.setAttribute('aria-selected', String(active));
+			});
+			const query = searchInput.value.trim().toLowerCase();
+			let visibleCount = 0;
+			certificateCards.forEach((card) => {
+				const matchesType = filter === 'all' || card.dataset.type === filter;
+				const matchesText = !query || card.dataset.title.toLowerCase().includes(query) || card.dataset.id.toLowerCase().includes(query) || card.dataset.description.toLowerCase().includes(query);
+				card.hidden = !matchesType || !matchesText;
+				if (!card.hidden) visibleCount++;
+			});
+			document.querySelector('#empty-state').hidden = visibleCount > 0;
+		}
+		filterTabs.forEach((tab) => tab.addEventListener('click', () => filterCertificates(tab.dataset.filter, tab)));
+		searchInput.addEventListener('input', () => filterCertificates(activeFilter, document.querySelector(`.filter-tab[data-filter="${activeFilter}"]`)));
+		document.querySelectorAll('[data-stat-filter]').forEach((link) => link.addEventListener('click', () => {
+			filterCertificates(link.dataset.statFilter, document.querySelector(`.filter-tab[data-filter="${link.dataset.statFilter}"]`));
+		}));
+
+		function makeCertificateDocument(card) {
+			const title = card.dataset.title;
+			const date = card.dataset.date;
+			const description = card.dataset.description;
+			const certificateId = card.dataset.id;
+			const type = card.dataset.type === 'project' ? 'Certificate of Project Completion' : card.dataset.type === 'achievement' ? 'Certificate of Achievement' : 'Certificate of Completion';
+			return `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>${title} - UniShikha Certificate</title><style>*{box-sizing:border-box}body{display:grid;min-height:100vh;place-items:center;margin:0;padding:24px;background:#eef3fb;color:#17243b;font-family:Georgia,serif}.certificate{position:relative;display:grid;width:min(100%,1000px);min-height:580px;align-content:center;justify-items:center;gap:14px;padding:55px;border:14px double #6f9fd2;background:radial-gradient(ellipse at center,#fff 55%,#f0f7ff);text-align:center}.certificate:before,.certificate:after{position:absolute;width:60px;height:60px;border:4px solid #b2d1ed;border-radius:50%;content:""} .certificate:before{top:22px;left:22px}.certificate:after{right:22px;bottom:22px}.brand{color:#235589;font:bold 20px Arial,sans-serif}.kicker{color:#7387a0;font:12px Arial,sans-serif;letter-spacing:3px;text-transform:uppercase}.title{margin:0;color:#16375e;font-size:38px}.recipient{margin:4px 0;color:#1b4778;font-size:32px;font-weight:bold}.description{max-width:620px;color:#586b83;font:15px/1.6 Arial,sans-serif}.seal{display:grid;width:62px;height:62px;place-items:center;border:3px solid #e8ad35;border-radius:50%;color:#e8ad35;font-size:32px}.footer{display:flex;width:80%;justify-content:space-between;margin-top:12px;color:#425875;font:12px Arial,sans-serif}.id{color:#718096;font:11px Arial,sans-serif}@media print{body{padding:0;background:#fff}.certificate{width:100%;min-height:100vh;border-width:12px}}</style></head><body><main class="certificate"><div class="brand">✦ UniShikha</div><div class="kicker">${type}</div><h1 class="title">${title}</h1><p>This certificate is proudly presented to</p><div class="recipient">Arafat Hossain</div><p class="description">${description}</p><div class="seal">✹</div><div class="footer"><span>Issued: ${date}</span><span>UniShikha Learning Platform</span></div><div class="id">Certificate ID: ${certificateId}</div></main><script>window.onload=()=>window.print()<\\/script></body></html>`;
+		}
+
+		function downloadCertificate(card) {
+			const blob = new Blob([makeCertificateDocument(card)], { type: 'text/html;charset=utf-8' });
+			const link = document.createElement('a');
+			link.href = URL.createObjectURL(blob);
+			link.download = `${card.dataset.title.replace(/[^a-z0-9]+/gi, '-')}-certificate.html`;
+			link.click();
+			window.setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+		}
+		function openCertificate(card) {
+			selectedCertificate = card;
+			document.querySelector('#dialog-title').textContent = card.dataset.title;
+			document.querySelector('#dialog-description').textContent = card.dataset.description;
+			document.querySelector('#dialog-id').textContent = card.dataset.id;
+			const preview = card.querySelector('.certificate-preview').cloneNode(true);
+			preview.removeAttribute('href');
+			preview.removeAttribute('data-open-certificate');
+			document.querySelector('#dialog-preview').replaceChildren(preview);
+			if (typeof dialog.showModal === 'function') dialog.showModal();
+			else dialog.setAttribute('open', '');
+		}
+		document.querySelectorAll('[data-open-certificate]').forEach((element) => element.addEventListener('click', (event) => {
+			event.preventDefault();
+			openCertificate(element.closest('.certificate-card'));
+		}));
+		document.querySelectorAll('[data-download]').forEach((button) => button.addEventListener('click', () => {
+			downloadCertificate(button.closest('.certificate-card'));
+			button.textContent = '✓ Downloaded';
+			window.setTimeout(() => { button.innerHTML = '↓ &nbsp;Download'; }, 1800);
+		}));
+		document.querySelectorAll('.more-button').forEach((button) => button.addEventListener('click', () => openCertificate(button.closest('.certificate-card'))));
+		document.querySelectorAll('[data-recent]').forEach((link) => link.addEventListener('click', (event) => {
+			event.preventDefault();
+			const card = certificateCards.find((item) => item.dataset.id === link.dataset.recent);
+			if (card) openCertificate(card);
+		}));
+		document.querySelectorAll('[data-recent], #view-all-recent').forEach((link) => link.addEventListener('click', () => {
+			if (link.id === 'view-all-recent') filterCertificates('all', document.querySelector('[data-filter="all"]'));
+		}));
+		document.querySelector('#verify-form').addEventListener('submit', (event) => {
+			event.preventDefault();
+			const enteredId = document.querySelector('#certificate-id').value.trim().toUpperCase();
+			const result = document.querySelector('#verify-result');
+			const match = certificateCards.find((card) => card.dataset.id.toUpperCase() === enteredId);
+			result.className = `verify-result ${match ? 'verified' : 'not-verified'}`;
+			result.textContent = match ? `✓ Verified: ${match.dataset.title} · Issued to Arafat Hossain` : 'Certificate ID not found in this demo. Connect certificate records to verify certificates.';
+			if (match) match.scrollIntoView({ behavior: 'smooth', block: 'center' });
+		});
+		document.querySelector('#dialog-download').addEventListener('click', () => { if (selectedCertificate) downloadCertificate(selectedCertificate); });
+		document.querySelector('#print-certificate').addEventListener('click', () => {
+			if (!selectedCertificate) return;
+			const printWindow = window.open('', '_blank');
+			if (!printWindow) {
+				document.querySelector('#dialog-description').textContent = 'Your browser blocked the print preview. Allow pop-ups and try again.';
+				return;
+			}
+			printWindow.document.open();
+			printWindow.document.write(makeCertificateDocument(selectedCertificate));
+			printWindow.document.close();
+		});
+		document.querySelector('#share-certificate').addEventListener('click', async (event) => {
+			if (!selectedCertificate) return;
+			const shareUrl = new URL(`#${selectedCertificate.dataset.id}`, window.location.href).href;
+			const button = event.currentTarget;
+			try {
+				if (navigator.share) await navigator.share({ title: `${selectedCertificate.dataset.title} Certificate`, text: selectedCertificate.dataset.description, url: shareUrl });
+				else if (navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(shareUrl);
+				else {
+					window.location.hash = selectedCertificate.dataset.id;
+					button.textContent = '↗ Link ready';
+					return;
+				}
+				button.textContent = '✓ Shared';
+			} catch (error) {
+				if (error.name !== 'AbortError') {
+					window.location.hash = selectedCertificate.dataset.id;
+					button.textContent = '↗ Link ready';
+				}
+			}
+		});
+		document.querySelector('#view-profile').addEventListener('click', (event) => {
+			event.preventDefault();
+			document.querySelector('#achievement-summary').classList.toggle('highlight-panel');
+		});
+		document.querySelector('#view-all-recent').addEventListener('click', (event) => {
+			event.preventDefault();
+			filterCertificates('all', document.querySelector('[data-filter="all"]'));
+			document.querySelector('#certificate-grid').scrollIntoView({ behavior: 'smooth' });
+		});
+		document.querySelector('#menu-button').addEventListener('click', () => document.querySelector('#certificate-grid').scrollIntoView({ behavior: 'smooth' }));
+		document.querySelector('#notification-button').addEventListener('click', () => document.querySelector('#recent-certificates').scrollIntoView({ behavior: 'smooth' }));
+		dialog.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
+		filterCertificates('all', document.querySelector('[data-filter="all"]'));
+	</script>
+</body>
+</html>

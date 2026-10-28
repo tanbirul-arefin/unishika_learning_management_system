@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#111d31">
+	<meta name="description" content="Connect, discuss, learn, and grow with the UniShikha community.">
+	<title>Community | UniShikha</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" th:href="@{/css/community.css}">
+</head>
+<body>
+	<div class="app-shell">
+		<aside class="sidebar">
+			<a class="brand" th:href="@{/dashboard}" aria-label="UniShikha dashboard">
+				<svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+					<path d="M4 15 24 5l20 10-20 10L4 15Z" fill="currentColor"/>
+					<path d="M12 20v11c7 7 17 7 24 0V20l-12 6-12-6Z" fill="currentColor" opacity=".78"/>
+					<path d="M43 17v13" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+					<circle cx="43" cy="33" r="2.5" fill="currentColor"/>
+				</svg>
+				<span>UniShikha<small>Learn · Build · Grow</small></span>
+			</a>
+			<nav class="side-nav" aria-label="Student navigation">
+				<a class="nav-link" th:href="@{/dashboard}"><span class="nav-icon">⌂</span>Dashboard</a>
+				<a class="nav-link" th:href="@{/mycourses}"><span class="nav-icon">▤</span>My Courses</a>
+				<a class="nav-link" th:href="@{/explore}"><span class="nav-icon">◎</span>Explore</a>
+				<a class="nav-link" th:href="@{/live-class}"><span class="nav-icon">▣</span>Live Classes</a>
+				<a class="nav-link" th:href="@{/assignments}"><span class="nav-icon">☷</span>Assignments</a>
+				<a class="nav-link" th:href="@{/quizzes}"><span class="nav-icon">☑</span>Quizzes</a>
+				<a class="nav-link" th:href="@{/myprojects}"><span class="nav-icon">◇</span>Projects</a>
+				<a class="nav-link active" th:href="@{/community}"><span class="nav-icon">♧</span>Community</a>
+				<a class="nav-link" href="#trending"><span class="nav-icon">♢</span>Certificates</a>
+				<a class="nav-link" th:href="@{/mycourses}"><span class="nav-icon">▤</span>Notes</a>
+				<a class="nav-link" href="#study-groups"><span class="nav-icon">▦</span>Calendar</a>
+				<a class="nav-link" th:href="@{/login}"><span class="nav-icon">☏</span>Messages</a>
+			</nav>
+			<a class="nav-link logout-link" th:href="@{/login}"><span class="nav-icon">⇥</span>Log out</a>
+		</aside>
+
+		<main class="main-content">
+			<header class="topbar">
+				<button class="menu-button" id="menu-button" type="button" aria-label="Scroll to community feed">☰</button>
+				<label class="search-box"><span aria-hidden="true">⌕</span><input id="community-search" type="search" placeholder="Search posts, topics, people, or tags..." aria-label="Search community posts, topics, and people"></label>
+				<div class="topbar-actions">
+					<button class="notification-button" id="notifications-button" type="button" aria-label="View notifications">♧<i></i></button>
+					<div class="profile-avatar">AH</div>
+					<strong class="profile-name">Arafat Hossain</strong>
+					<a class="profile-menu" th:href="@{/login}" aria-label="Profile and account settings">⌄</a>
+				</div>
+			</header>
+
+			<section class="page-heading" id="community-top">
+				<div><h1>Community</h1><p>Connect, discuss, learn and grow together with the UniShikha community.</p></div>
+				<button class="new-post-button" id="new-post-button" type="button"><span>＋</span> New Post</button>
+			</section>
+
+			<nav class="feed-tabs" role="tablist" aria-label="Filter community posts">
+				<button class="feed-tab active" type="button" role="tab" aria-selected="true" data-feed="all">All Posts</button>
+				<button class="feed-tab" type="button" role="tab" aria-selected="false" data-feed="discussion">Discussions</button>
+				<button class="feed-tab" type="button" role="tab" aria-selected="false" data-feed="qa">Q&amp;A</button>
+				<button class="feed-tab" type="button" role="tab" aria-selected="false" data-feed="showcase">Showcase</button>
+				<button class="feed-tab" type="button" role="tab" aria-selected="false" data-feed="resources">Resources</button>
+				<button class="feed-tab" type="button" role="tab" aria-selected="false" data-feed="study-groups">Study Groups</button>
+				<button class="feed-tab" type="button" role="tab" aria-selected="false" data-feed="announcements">Announcements</button>
+			</nav>
+
+			<div class="community-grid">
+				<aside class="left-column">
+					<section class="side-card hub-card">
+						<h2>Community Hub</h2>
+						<nav class="hub-links" aria-label="Community feed shortcuts">
+							<a class="hub-link active" href="#community-feed" data-hub-filter="all"><span>☷</span>All Discussions</a>
+							<a class="hub-link" href="#community-feed" data-hub-filter="mine"><span>▣</span>My Posts</a>
+							<a class="hub-link" href="#community-feed" data-hub-filter="saved"><span>♧</span>Saved Posts</a>
+							<a class="hub-link" href="#community-feed" data-hub-filter="saved"><span>♧</span>My Bookmarks</a>
+							<a class="hub-link" href="#contributors"><span>♙</span>Following</a>
+							<a class="hub-link" href="#community-feed" data-hub-filter="announcements"><span>♧</span>Notifications</a>
+						</nav>
+					</section>
+
+					<section class="side-card categories-card" id="categories">
+						<div class="side-card-heading"><h2>Categories</h2><button class="text-link" type="button" data-reset-category>Clear</button></div>
+						<nav class="category-list" aria-label="Filter posts by category">
+							<a class="category-link" href="#community-feed" data-category="General Discussion"><span class="category-icon general">☷</span><span>General Discussion</span><small>1.2K</small></a>
+							<a class="category-link" href="#community-feed" data-category="Python"><span class="category-icon python">Py</span><span>Python</span><small>856</small></a>
+							<a class="category-link" href="#community-feed" data-category="Web Development"><span class="category-icon web">⌘</span><span>Web Development</span><small>1.1K</small></a>
+							<a class="category-link" href="#community-feed" data-category="Mobile App"><span class="category-icon mobile">◀</span><span>Mobile App (Flutter)</span><small>643</small></a>
+							<a class="category-link" href="#community-feed" data-category="UI/UX Design"><span class="category-icon design">▧</span><span>UI/UX Design</span><small>421</small></a>
+							<a class="category-link" href="#community-feed" data-category="Career & Jobs"><span class="category-icon career">▣</span><span>Career &amp; Jobs</span><small>388</small></a>
+							<a class="category-link" href="#community-feed" data-category="Study Tips"><span class="category-icon study">▧</span><span>Study Tips</span><small>312</small></a>
+							<a class="category-link" href="#community-feed" data-category="Project Help"><span class="category-icon project">♜</span><span>Project Help</span><small>509</small></a>
+							<a class="category-link" href="#community-feed" data-category="Resources"><span class="category-icon resources">▤</span><span>Resources</span><small>276</small></a>
+							<a class="category-link" href="#community-feed" data-category="Off Topic"><span class="category-icon off-topic">☼</span><span>Off Topic</span><small>184</small></a>
+						</nav>
+					</section>
+				</aside>
+
+				<section class="feed-column" id="community-feed" aria-label="Community posts">
+					<section class="create-card" id="create-post">
+						<h2>Create a post</h2>
+						<form id="post-form">
+							<div class="composer-row">
+								<div class="profile-avatar composer-avatar">AH</div>
+								<label class="sr-only" for="post-text">Write a community post</label>
+								<textarea id="post-text" rows="2" placeholder="What's on your mind? Ask a question, share a resource, or start a discussion..." required></textarea>
+							</div>
+							<div class="composer-attachments">
+								<button type="button" class="attachment-button" data-attachment="Text">✎ &nbsp;Text</button>
+								<label class="attachment-button" for="post-image">▧ &nbsp;Image<input id="post-image" type="file" accept="image/*" hidden></label>
+								<label class="attachment-button" for="post-file">▤ &nbsp;File<input id="post-file" type="file" accept=".pdf,.zip,.doc,.docx,.txt,.py,.js" hidden></label>
+								<button type="button" class="attachment-button poll-button" data-attachment="Poll">▦ &nbsp;Poll</button>
+								<select id="post-category" aria-label="Select post category">
+									<option value="General Discussion">General Discussion</option><option value="Python">Python</option><option value="Web Development">Web Development</option><option value="Mobile App">Mobile App</option><option value="UI/UX Design">UI/UX Design</option><option value="Career & Jobs">Career &amp; Jobs</option><option value="Study Tips">Study Tips</option><option value="Project Help">Project Help</option><option value="Resources">Resources</option><option value="Off Topic">Off Topic</option>
+								</select>
+								<button class="post-submit" type="submit">Post</button>
+							</div>
+							<p class="composer-feedback" id="composer-feedback" aria-live="polite"></p>
+						</form>
+					</section>
+
+					<div class="active-filter-notice" id="active-filter-notice" hidden></div>
+					<div class="post-list" id="post-list">
+						<article class="post-card" id="post-api-python" data-post-id="post-api-python" data-post-type="discussion" data-category="Python" data-author="Tanvir Rahman" data-tags="python api requests programming" data-title="How to handle API requests in Python?" data-likes="12" data-comments="8">
+							<div class="post-author">
+								<img class="author-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&amp;fit=crop&amp;w=96&amp;q=80" alt="">
+								<div><a class="author-name" href="#contributors" data-profile="Tanvir Rahman">Tanvir Rahman</a><time datetime="2026-10-28T09:00">2 hours ago</time></div>
+								<a class="post-tag python-tag" href="#categories" data-category-link="Python">Python</a>
+								<button class="post-menu" type="button" aria-label="More options for this post">•••</button>
+							</div>
+							<div class="post-body"><h3><a href="#post-api-python" class="post-title-link">How to handle API requests in Python?</a></h3><p>I'm trying to fetch data from an API using Python. Can anyone explain the best way to handle requests and errors?</p></div>
+							<div class="post-actions"><button class="post-action like-action" type="button" aria-pressed="false">👍 <span class="like-count">12</span></button><button class="post-action comment-toggle" type="button">▢ <span class="comment-count">8</span></button><button class="post-action save-action" type="button" aria-pressed="false">♧ <span>Save</span></button><a class="post-action share-action" href="#post-api-python">↗ <span>Share</span></a></div>
+							<div class="comments-panel" hidden><div class="comment-list"><article class="comment"><span class="comment-avatar">SA</span><p><a href="#contributors" data-profile="Sadia Ahmed">Sadia Ahmed</a> Try the <code>requests</code> library and check the response status before parsing JSON.</p></article></div><form class="comment-form"><label class="sr-only" for="comment-api-python">Write a comment</label><input id="comment-api-python" type="text" placeholder="Write a comment..." required><button type="submit">Reply</button></form></div>
+						</article>
+
+						<article class="post-card" id="post-portfolio" data-post-id="post-portfolio" data-post-type="showcase" data-category="Web Development" data-author="Nusrat Jahan" data-tags="portfolio html css javascript showcase" data-title="My first portfolio website">
+							<div class="post-author">
+								<img class="author-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=crop&amp;w=96&amp;q=80" alt="">
+								<div><a class="author-name" href="#contributors" data-profile="Nusrat Jahan">Nusrat Jahan</a><time datetime="2026-10-28T07:00">4 hours ago</time></div>
+								<a class="post-tag web-tag" href="#categories" data-category-link="Web Development">Web Development</a>
+								<button class="post-menu" type="button" aria-label="More options for this post">•••</button>
+							</div>
+							<div class="post-body"><h3><a href="#post-portfolio" class="post-title-link">My first portfolio website 🎉</a></h3><p>Finally completed my first portfolio website using HTML, CSS and JavaScript. Would love to hear your feedback!</p>
+								<div class="project-gallery"><a href="#post-portfolio" class="gallery-preview preview-one" aria-label="Open portfolio preview"><span>Hi, I'm Arafat<br><b>Frontend Developer</b></span></a><a href="#post-portfolio" class="gallery-preview preview-two" aria-label="Open portfolio project cards"><span>My Projects<br>◫ &nbsp;◫ &nbsp;◫</span></a><a href="#post-portfolio" class="gallery-preview preview-three" aria-label="Open additional portfolio projects"><span>+3<br><small>projects</small></span></a></div>
+							</div>
+							<div class="post-actions"><button class="post-action like-action" type="button" aria-pressed="false">👍 <span class="like-count">32</span></button><button class="post-action comment-toggle" type="button">▢ <span class="comment-count">14</span></button><button class="post-action save-action" type="button" aria-pressed="false">♧ <span>Save</span></button><a class="post-action share-action" href="#post-portfolio">↗ <span>Share</span></a></div>
+							<div class="comments-panel" hidden><div class="comment-list"><article class="comment"><span class="comment-avatar pink">SR</span><p><a href="#contributors" data-profile="Sarah Rahman">Sarah Rahman</a> Love the clean layout! The project cards look great.</p></article></div><form class="comment-form"><label class="sr-only" for="comment-portfolio">Write a comment</label><input id="comment-portfolio" type="text" placeholder="Write a comment..." required><button type="submit">Reply</button></form></div>
+						</article>
+
+						<article class="post-card" id="post-state-management" data-post-id="post-state-management" data-post-type="qa" data-category="Mobile App" data-author="Hasib Khan" data-tags="flutter beginner provider riverpod bloc state management question" data-title="Which state management is better for a beginner?">
+							<div class="post-author">
+								<img class="author-avatar" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&amp;fit=crop&amp;w=96&amp;q=80" alt="">
+								<div><a class="author-name" href="#contributors" data-profile="Hasib Khan">Hasib Khan</a><time datetime="2026-10-28T05:00">6 hours ago</time></div>
+								<a class="post-tag flutter-tag" href="#categories" data-category-link="Mobile App">Flutter</a>
+								<button class="post-menu" type="button" aria-label="More options for this post">•••</button>
+							</div>
+							<div class="post-body"><h3><a href="#post-state-management" class="post-title-link">Which state management is better for a beginner?</a></h3><p>I'm confused between Provider, Riverpod and Bloc. Which one should I learn first as a beginner and why?</p></div>
+							<div class="post-actions"><button class="post-action like-action" type="button" aria-pressed="false">👍 <span class="like-count">5</span></button><button class="post-action comment-toggle" type="button">▢ <span class="comment-count">17</span></button><button class="post-action save-action" type="button" aria-pressed="false">♧ <span>Save</span></button><a class="post-action share-action" href="#post-state-management">↗ <span>Share</span></a></div>
+							<div class="comments-panel" hidden><div class="comment-list"><article class="comment"><span class="comment-avatar blue">TR</span><p><a href="#contributors" data-profile="Tanvir Rahman">Tanvir Rahman</a> Provider is a friendly place to start. Learn the fundamentals, then compare the alternatives.</p></article></div><form class="comment-form"><label class="sr-only" for="comment-state">Write a comment</label><input id="comment-state" type="text" placeholder="Write a comment..." required><button type="submit">Reply</button></form></div>
+						</article>
+
+						<article class="post-card" id="post-study-group" data-post-id="post-study-group" data-post-type="study-groups" data-category="Study Tips" data-author="Arafat Hossain" data-tags="study group python beginners" data-title="Python beginners study group">
+							<div class="post-author"><div class="author-initials">AH</div><div><a class="author-name" href="#community-top" data-profile="Arafat Hossain">Arafat Hossain</a><time datetime="2026-10-28T04:00">7 hours ago</time></div><a class="post-tag study-tag" href="#categories" data-category-link="Study Tips">Study Tips</a><button class="post-menu" type="button" aria-label="More options for this post">•••</button></div>
+							<div class="post-body"><h3><a href="#post-study-group" class="post-title-link">Python beginners study group</a></h3><p>Looking for a few learners to practice Python together this weekend. We can work through loops and functions as a group.</p></div>
+							<div class="post-actions"><button class="post-action like-action" type="button" aria-pressed="false">👍 <span class="like-count">9</span></button><button class="post-action comment-toggle" type="button">▢ <span class="comment-count">6</span></button><button class="post-action save-action" type="button" aria-pressed="false">♧ <span>Save</span></button><a class="post-action share-action" href="#post-study-group">↗ <span>Share</span></a></div>
+							<div class="comments-panel" hidden><div class="comment-list"></div><form class="comment-form"><label class="sr-only" for="comment-study">Write a comment</label><input id="comment-study" type="text" placeholder="Write a comment..." required><button type="submit">Reply</button></form></div>
+						</article>
+					</div>
+					<p class="empty-state" id="empty-state" hidden>No community posts match your filters.</p>
+					<button class="load-more-button" id="load-more" type="button">Load more posts</button>
+				</section>
+
+				<aside class="right-column">
+					<section class="side-card trending-card" id="trending">
+						<div class="side-card-heading"><h2><span>🔥</span> Trending Topics</h2><a href="#community-feed" class="view-all-link" data-clear-filters>View All</a></div>
+						<ol class="trending-list">
+							<li><a href="#community-feed" data-topic="Best laptop for programming?"><strong>Best laptop for programming?</strong><small>24 posts</small></a></li>
+							<li><a href="#community-feed" data-topic="How to get first job as a developer?"><strong>How to get first job as a developer?</strong><small>18 posts</small></a></li>
+							<li><a href="#community-feed" data-topic="Python project ideas for beginners"><strong>Python project ideas for beginners</strong><small>16 posts</small></a></li>
+							<li><a href="#community-feed" data-topic="React vs Next.js"><strong>React vs Next.js</strong><small>14 posts</small></a></li>
+							<li><a href="#community-feed" data-topic="Flutter roadmap"><strong>Flutter roadmap</strong><small>12 posts</small></a></li>
+						</ol>
+					</section>
+
+					<section class="side-card contributors-card" id="contributors">
+						<div class="side-card-heading"><h2><span>🔥</span> Top Contributors</h2><a class="view-all-link" href="#contributors-list">View All</a></div>
+						<div id="contributors-list">
+							<article class="contributor"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&amp;fit=crop&amp;w=80&amp;q=80" alt=""><div><a href="#community-top" data-profile="Arafat Hossain">Arafat Hossain 👑</a><small>432 points</small></div><button class="follow-button following" type="button" aria-pressed="true">Following</button></article>
+							<article class="contributor"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=crop&amp;w=80&amp;q=80" alt=""><div><a href="#community-feed" data-profile="Nusrat Jahan">Nusrat Jahan</a><small>390 points</small></div><button class="follow-button" type="button" aria-pressed="false">Follow</button></article>
+							<article class="contributor"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&amp;fit=crop&amp;w=80&amp;q=80" alt=""><div><a href="#community-feed" data-profile="Tanvir Rahman">Tanvir Rahman</a><small>310 points</small></div><button class="follow-button" type="button" aria-pressed="false">Follow</button></article>
+							<article class="contributor"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&amp;fit=crop&amp;w=80&amp;q=80" alt=""><div><a href="#community-feed" data-profile="Rafiul Islam">Rafiul Islam</a><small>280 points</small></div><button class="follow-button" type="button" aria-pressed="false">Follow</button></article>
+							<article class="contributor"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&amp;fit=crop&amp;w=80&amp;q=80" alt=""><div><a href="#community-feed" data-profile="Sarah Ahmed">Sarah Ahmed</a><small>250 points</small></div><button class="follow-button" type="button" aria-pressed="false">Follow</button></article>
+						</div>
+					</section>
+
+					<section class="side-card study-groups-card" id="study-groups">
+						<div class="side-card-heading"><h2>Study Groups</h2><a class="view-all-link" href="#study-groups">View All</a></div>
+						<article class="study-group"><span class="group-avatar python-group">Py</span><div><a href="#post-study-group" data-group="Python Learners">Python Learners</a><small><span class="member-count">342</span> members</small></div><button class="join-button" type="button" aria-pressed="false">Join</button></article>
+						<article class="study-group"><span class="group-avatar react-group">⚛</span><div><a href="#post-portfolio" data-group="React Developers">React Developers</a><small><span class="member-count">280</span> members</small></div><button class="join-button" type="button" aria-pressed="false">Join</button></article>
+						<article class="study-group"><span class="group-avatar flutter-group">◀</span><div><a href="#post-state-management" data-group="Flutter Community">Flutter Community</a><small><span class="member-count">198</span> members</small></div><button class="join-button" type="button" aria-pressed="false">Join</button></article>
+					</section>
+				</aside>
+			</div>
+			<footer class="page-footer">© 2026 UniShikha <span>•</span> Learn together, grow together.</footer>
+		</main>
+	</div>
+
+	<script>
+		const postList = document.querySelector('#post-list');
+		let activeFeed = 'all';
+		let activeHubFilter = 'all';
+		let activeCategory = '';
+		const savedPosts = new Set();
+		const initialPosts = Array.from(document.querySelectorAll('.post-card'));
+
+		function renderFeed() {
+			const query = document.querySelector('#community-search').value.trim().toLowerCase();
+			let visibleCount = 0;
+			document.querySelectorAll('.post-card').forEach((post) => {
+				const feedMatches = activeFeed === 'all' || post.dataset.postType === activeFeed;
+				const categoryMatches = !activeCategory || post.dataset.category === activeCategory;
+				const hubMatches = activeHubFilter === 'all'
+					|| (activeHubFilter === 'mine' && post.dataset.author === 'Arafat Hossain')
+					|| (activeHubFilter === 'saved' && savedPosts.has(post.dataset.postId))
+					|| (activeHubFilter === 'announcements' && post.dataset.postType === 'announcements');
+				const searchMatches = !query || post.textContent.toLowerCase().includes(query)
+					|| post.dataset.tags.toLowerCase().includes(query)
+					|| post.dataset.title.toLowerCase().includes(query)
+					|| post.dataset.author.toLowerCase().includes(query);
+				const visible = feedMatches && categoryMatches && hubMatches && searchMatches;
+				post.hidden = !visible;
+				if (visible) visibleCount++;
+			});
+			document.querySelector('#empty-state').hidden = visibleCount > 0;
+			const notice = document.querySelector('#active-filter-notice');
+			const labels = [];
+			if (activeCategory) labels.push(`Category: ${activeCategory}`);
+			if (activeHubFilter === 'mine') labels.push('Your posts');
+			if (activeHubFilter === 'saved') labels.push('Saved posts');
+			if (activeHubFilter === 'announcements') labels.push('Announcements');
+			notice.hidden = labels.length === 0;
+			notice.textContent = labels.join(' · ');
+		}
+
+		function selectFeed(feed, button) {
+			activeFeed = feed;
+			document.querySelectorAll('.feed-tab').forEach((tab) => {
+				const active = tab === button;
+				tab.classList.toggle('active', active);
+				tab.setAttribute('aria-selected', String(active));
+			});
+			renderFeed();
+		}
+		document.querySelectorAll('.feed-tab').forEach((button) => button.addEventListener('click', () => selectFeed(button.dataset.feed, button)));
+		document.querySelectorAll('[data-hub-filter]').forEach((link) => link.addEventListener('click', () => {
+			activeHubFilter = link.dataset.hubFilter;
+			activeCategory = '';
+			activeFeed = 'all';
+			document.querySelectorAll('.feed-tab').forEach((tab) => {
+				const active = tab.dataset.feed === 'all';
+				tab.classList.toggle('active', active);
+				tab.setAttribute('aria-selected', String(active));
+			});
+			document.querySelectorAll('.hub-link').forEach((item) => item.classList.toggle('active', item === link));
+			renderFeed();
+		}));
+		document.querySelectorAll('[data-category]').forEach((link) => link.addEventListener('click', () => {
+			activeCategory = link.dataset.category;
+			activeHubFilter = 'all';
+			activeFeed = 'all';
+			document.querySelectorAll('.feed-tab').forEach((tab) => {
+				const active = tab.dataset.feed === 'all';
+				tab.classList.toggle('active', active);
+				tab.setAttribute('aria-selected', String(active));
+			});
+			document.querySelectorAll('.hub-link').forEach((item) => item.classList.toggle('active', item.dataset.hubFilter === 'all'));
+			renderFeed();
+		}));
+		document.querySelector('[data-reset-category]').addEventListener('click', () => {
+			activeCategory = '';
+			activeHubFilter = 'all';
+			activeFeed = 'all';
+			document.querySelectorAll('.hub-link').forEach((item, index) => item.classList.toggle('active', index === 0));
+			selectFeed('all', document.querySelector('[data-feed="all"]'));
+		});
+		document.querySelectorAll('[data-category-link]').forEach((link) => link.addEventListener('click', () => {
+			activeCategory = link.dataset.categoryLink;
+			renderFeed();
+		}));
+		document.querySelector('#community-search').addEventListener('input', renderFeed);
+		document.querySelectorAll('[data-topic]').forEach((link) => link.addEventListener('click', () => {
+			document.querySelector('#community-search').value = link.dataset.topic;
+			activeCategory = '';
+			activeHubFilter = 'all';
+			renderFeed();
+		}));
+		document.querySelectorAll('[data-clear-filters]').forEach((link) => link.addEventListener('click', () => {
+			activeCategory = '';
+			activeHubFilter = 'all';
+			document.querySelector('#community-search').value = '';
+			selectFeed('all', document.querySelector('[data-feed="all"]'));
+		}));
+		document.querySelectorAll('[data-profile]').forEach((link) => link.addEventListener('click', (event) => {
+			event.preventDefault();
+			document.querySelector('#community-search').value = link.dataset.profile;
+			activeCategory = '';
+			activeHubFilter = 'all';
+			renderFeed();
+			document.querySelector('#community-feed').scrollIntoView({ behavior: 'smooth' });
+		}));
+		document.querySelectorAll('[data-group]').forEach((link) => link.addEventListener('click', (event) => {
+			event.preventDefault();
+			document.querySelector('#community-search').value = link.dataset.group;
+			activeCategory = '';
+			activeHubFilter = 'all';
+			renderFeed();
+			document.querySelector('#community-feed').scrollIntoView({ behavior: 'smooth' });
+		}));
+
+		document.querySelectorAll('.like-action').forEach((button) => button.addEventListener('click', () => {
+			const active = button.getAttribute('aria-pressed') === 'true';
+			const count = button.querySelector('.like-count');
+			count.textContent = Number(count.textContent) + (active ? -1 : 1);
+			button.setAttribute('aria-pressed', String(!active));
+			button.classList.toggle('is-active', !active);
+		}));
+		document.querySelectorAll('.save-action').forEach((button) => button.addEventListener('click', () => {
+			const post = button.closest('.post-card');
+			const saved = button.getAttribute('aria-pressed') !== 'true';
+			button.setAttribute('aria-pressed', String(saved));
+			button.classList.toggle('is-active', saved);
+			button.querySelector('span').textContent = saved ? 'Saved' : 'Save';
+			if (saved) savedPosts.add(post.dataset.postId);
+			else savedPosts.delete(post.dataset.postId);
+			if (activeHubFilter === 'saved') renderFeed();
+		}));
+		document.querySelectorAll('.comment-toggle').forEach((button) => button.addEventListener('click', () => {
+			const panel = button.closest('.post-card').querySelector('.comments-panel');
+			panel.hidden = !panel.hidden;
+			if (!panel.hidden) panel.querySelector('input').focus();
+		}));
+		document.querySelectorAll('.comment-form').forEach((form) => form.addEventListener('submit', (event) => {
+			event.preventDefault();
+			const input = form.querySelector('input');
+			const text = input.value.trim();
+			if (!text) return;
+			const comment = document.createElement('article');
+			comment.className = 'comment';
+			const avatar = document.createElement('span');
+			avatar.className = 'comment-avatar own-avatar';
+			avatar.textContent = 'AH';
+			const paragraph = document.createElement('p');
+			const author = document.createElement('a');
+			author.href = '#community-top';
+			author.textContent = 'You';
+			paragraph.append(author, document.createTextNode(` ${text}`));
+			comment.append(avatar, paragraph);
+			form.closest('.comments-panel').querySelector('.comment-list').append(comment);
+			const count = form.closest('.post-card').querySelector('.comment-count');
+			count.textContent = Number(count.textContent) + 1;
+			input.value = '';
+		}));
+		document.querySelectorAll('.share-action').forEach((link) => link.addEventListener('click', async (event) => {
+			event.preventDefault();
+			const url = new URL(link.getAttribute('href'), window.location.href).href;
+			if (navigator.clipboard && window.isSecureContext) {
+				try {
+					await navigator.clipboard.writeText(url);
+					link.querySelector('span').textContent = 'Copied';
+				} catch {
+					window.location.hash = link.getAttribute('href').slice(1);
+				}
+			} else {
+				window.location.hash = link.getAttribute('href').slice(1);
+			}
+		}));
+		document.querySelectorAll('.follow-button').forEach((button) => button.addEventListener('click', () => {
+			const following = button.getAttribute('aria-pressed') !== 'true';
+			button.setAttribute('aria-pressed', String(following));
+			button.classList.toggle('following', following);
+			button.textContent = following ? 'Following' : 'Follow';
+		}));
+		document.querySelectorAll('.join-button').forEach((button) => button.addEventListener('click', () => {
+			const joined = button.getAttribute('aria-pressed') !== 'true';
+			button.setAttribute('aria-pressed', String(joined));
+			button.classList.toggle('joined', joined);
+			button.textContent = joined ? 'Joined' : 'Join';
+			const count = button.closest('.study-group').querySelector('.member-count');
+			count.textContent = Number(count.textContent) + (joined ? 1 : -1);
+		}));
+		document.querySelectorAll('.post-menu').forEach((button) => button.addEventListener('click', () => {
+			const post = button.closest('.post-card');
+			const saved = post.querySelector('.save-action').getAttribute('aria-pressed') === 'true';
+			post.querySelector('.save-action').click();
+			button.setAttribute('aria-label', saved ? 'Post removed from saved posts' : 'Post saved');
+		}));
+
+		document.querySelector('#post-form').addEventListener('submit', (event) => {
+			event.preventDefault();
+			const text = document.querySelector('#post-text').value.trim();
+			if (!text) return;
+			const category = document.querySelector('#post-category').value;
+			const imageFile = document.querySelector('#post-image').files[0];
+			const attachmentFile = document.querySelector('#post-file').files[0];
+			const post = document.createElement('article');
+			const id = `post-${Date.now()}`;
+			post.className = 'post-card';
+			post.id = id;
+			post.dataset.postId = id;
+			post.dataset.postType = 'discussion';
+			post.dataset.category = category;
+			post.dataset.author = 'Arafat Hossain';
+			post.dataset.tags = `${category} ${text}`.toLowerCase();
+			post.dataset.title = text;
+			const authorRow = document.createElement('div');
+			authorRow.className = 'post-author';
+			const avatar = document.createElement('div');
+			avatar.className = 'author-initials';
+			avatar.textContent = 'AH';
+			const author = document.createElement('div');
+			const name = document.createElement('a');
+			name.className = 'author-name';
+			name.href = '#community-top';
+			name.textContent = 'Arafat Hossain';
+			const time = document.createElement('time');
+			time.textContent = 'Just now';
+			author.append(name, time);
+			const tag = document.createElement('span');
+			tag.className = 'post-tag new-tag';
+			tag.textContent = category;
+			authorRow.append(avatar, author, tag);
+			const body = document.createElement('div');
+			body.className = 'post-body';
+			const heading = document.createElement('h3');
+			heading.textContent = text.length > 78 ? `${text.slice(0, 78)}…` : text;
+			const paragraph = document.createElement('p');
+			paragraph.textContent = text;
+			body.append(heading, paragraph);
+			if (imageFile) {
+				const image = document.createElement('img');
+				image.className = 'post-upload-preview';
+				image.alt = 'Image attached to post';
+				image.src = URL.createObjectURL(imageFile);
+				body.append(image);
+			}
+			if (attachmentFile) {
+				const fileLink = document.createElement('a');
+				fileLink.className = 'attachment-preview';
+				fileLink.href = URL.createObjectURL(attachmentFile);
+				fileLink.download = attachmentFile.name;
+				fileLink.textContent = `▤ ${attachmentFile.name}`;
+				body.append(fileLink);
+			}
+			if (document.querySelector('.poll-draft')) {
+				const poll = document.createElement('div');
+				poll.className = 'poll-preview';
+				poll.textContent = 'Poll draft · Add poll choices after creating your post.';
+				body.append(poll);
+			}
+			const actions = document.createElement('div');
+			actions.className = 'post-actions';
+			actions.innerHTML = '<button class="post-action like-action" type="button" aria-pressed="false">👍 <span class="like-count">0</span></button><button class="post-action comment-toggle" type="button">▢ <span class="comment-count">0</span></button><button class="post-action save-action" type="button" aria-pressed="false">♧ <span>Save</span></button><a class="post-action share-action" href="#' + id + '">↗ <span>Share</span></a>';
+			const comments = document.createElement('div');
+			comments.className = 'comments-panel';
+			comments.hidden = true;
+			comments.innerHTML = `<div class="comment-list"></div><form class="comment-form"><label class="sr-only" for="comment-${id}">Write a comment</label><input id="comment-${id}" type="text" placeholder="Write a comment..." required><button type="submit">Reply</button></form>`;
+			post.append(authorRow, body, actions, comments);
+			postList.prepend(post);
+			attachPostInteractions(post);
+			document.querySelector('#post-text').value = '';
+			document.querySelector('#post-image').value = '';
+			document.querySelector('#post-file').value = '';
+			document.querySelector('.poll-draft')?.remove();
+			document.querySelector('#composer-feedback').textContent = 'Post added to this page. Connect a backend to publish it for other community members.';
+			activeFeed = 'all';
+			activeCategory = '';
+			activeHubFilter = 'all';
+			selectFeed('all', document.querySelector('[data-feed="all"]'));
+			window.setTimeout(() => { document.querySelector('#composer-feedback').textContent = ''; }, 4500);
+		});
+
+		function attachPostInteractions(post) {
+			post.querySelector('.like-action').addEventListener('click', (event) => {
+				const button = event.currentTarget;
+				const active = button.getAttribute('aria-pressed') === 'true';
+				const count = button.querySelector('.like-count');
+				count.textContent = Number(count.textContent) + (active ? -1 : 1);
+				button.setAttribute('aria-pressed', String(!active));
+				button.classList.toggle('is-active', !active);
+			});
+			post.querySelector('.save-action').addEventListener('click', (event) => {
+				const button = event.currentTarget;
+				const saved = button.getAttribute('aria-pressed') !== 'true';
+				button.setAttribute('aria-pressed', String(saved));
+				button.classList.toggle('is-active', saved);
+				button.querySelector('span').textContent = saved ? 'Saved' : 'Save';
+				if (saved) savedPosts.add(post.dataset.postId);
+				else savedPosts.delete(post.dataset.postId);
+				if (activeHubFilter === 'saved') renderFeed();
+			});
+			post.querySelector('.comment-toggle').addEventListener('click', () => {
+				const panel = post.querySelector('.comments-panel');
+				panel.hidden = !panel.hidden;
+				if (!panel.hidden) panel.querySelector('input').focus();
+			});
+			post.querySelector('.comment-form').addEventListener('submit', (event) => {
+				event.preventDefault();
+				const input = post.querySelector('.comment-form input');
+				if (!input.value.trim()) return;
+				const comment = document.createElement('article');
+				comment.className = 'comment';
+				const avatar = document.createElement('span');
+				avatar.className = 'comment-avatar own-avatar';
+				avatar.textContent = 'AH';
+				const paragraph = document.createElement('p');
+				const author = document.createElement('a');
+				author.href = '#community-top';
+				author.textContent = 'You';
+				paragraph.append(author, document.createTextNode(` ${input.value.trim()}`));
+				comment.append(avatar, paragraph);
+				post.querySelector('.comment-list').append(comment);
+				const count = post.querySelector('.comment-count');
+				count.textContent = Number(count.textContent) + 1;
+				input.value = '';
+			});
+			post.querySelector('.share-action').addEventListener('click', async (event) => {
+				event.preventDefault();
+				const link = event.currentTarget;
+				if (navigator.clipboard && window.isSecureContext) {
+					try {
+						await navigator.clipboard.writeText(new URL(link.getAttribute('href'), window.location.href).href);
+						link.querySelector('span').textContent = 'Copied';
+					} catch {
+						window.location.hash = post.id;
+					}
+				} else window.location.hash = post.id;
+			});
+		}
+
+		document.querySelector('#new-post-button').addEventListener('click', () => {
+			document.querySelector('#create-post').scrollIntoView({ behavior: 'smooth', block: 'center' });
+			document.querySelector('#post-text').focus({ preventScroll: true });
+		});
+		document.querySelector('#menu-button').addEventListener('click', () => document.querySelector('#community-feed').scrollIntoView({ behavior: 'smooth' }));
+		document.querySelector('#notifications-button').addEventListener('click', () => {
+			activeHubFilter = 'announcements';
+			document.querySelector('[data-hub-filter="announcements"]').click();
+		});
+		document.querySelectorAll('[data-attachment]').forEach((button) => button.addEventListener('click', () => {
+			if (button.dataset.attachment === 'Poll') {
+				const draft = document.querySelector('.poll-draft');
+				if (draft) draft.remove();
+				else {
+					const poll = document.createElement('div');
+					poll.className = 'poll-draft';
+					poll.textContent = 'Poll option: Add a question and choices in your post text.';
+					document.querySelector('.composer-row').after(poll);
+				}
+			} else document.querySelector('#post-text').focus();
+		}));
+		document.querySelectorAll('input[type="file"]').forEach((input) => input.addEventListener('change', () => {
+			const file = input.files[0];
+			if (!file) return;
+			document.querySelector('#composer-feedback').textContent = `${file.name} attached to your post draft.`;
+		}));
+		document.querySelector('#load-more').addEventListener('click', () => {
+			const copies = initialPosts.map((original, index) => {
+				const copy = original.cloneNode(true);
+				copy.id = `${original.id}-more-${Date.now()}-${index}`;
+				copy.dataset.postId = copy.id;
+				copy.querySelectorAll('label[for], input[id]').forEach((element) => {
+					if (element.id) element.id += `-${Date.now()}-${index}`;
+					if (element.htmlFor) element.htmlFor += `-${Date.now()}-${index}`;
+				});
+				return copy;
+			});
+			copies.forEach((post) => {
+				postList.append(post);
+				attachPostInteractions(post);
+			});
+			document.querySelector('#load-more').textContent = 'Demo posts added';
+		});
+		renderFeed();
+	</script>
+</body>
+</html>

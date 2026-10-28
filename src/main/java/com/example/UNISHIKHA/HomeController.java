@@ -47,6 +47,16 @@ public class HomeController {
 		return "myproject";
 	}
 
+	@GetMapping({ "/community", "/communities" })
+	public String community() {
+		return "community";
+	}
+
+	@GetMapping({ "/certificate", "/certificates", "/mycertificate", "/my-certificates" })
+	public String certificates() {
+		return "mycertificate";
+	}
+
 	@GetMapping("/explore")
 	public String explore() {
 		return "explore";
