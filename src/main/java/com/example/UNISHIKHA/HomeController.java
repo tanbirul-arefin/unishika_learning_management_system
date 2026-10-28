@@ -37,6 +37,16 @@ public class HomeController {
 		return "assignment";
 	}
 
+	@GetMapping({ "/quiz", "/quizzes" })
+	public String quiz() {
+		return "quiz";
+	}
+
+	@GetMapping({ "/project", "/projects", "/myprojects", "/my-projects" })
+	public String projects() {
+		return "myproject";
+	}
+
 	@GetMapping("/explore")
 	public String explore() {
 		return "explore";

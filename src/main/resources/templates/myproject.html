@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#111d31">
+	<meta name="description" content="View, work on, and submit your UniShikha course projects.">
+	<title>My Projects | UniShikha</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" th:href="@{/css/myproject.css}">
+</head>
+<body>
+	<div class="app-shell">
+		<aside class="sidebar">
+			<a class="brand" th:href="@{/dashboard}" aria-label="UniShikha dashboard">
+				<svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+					<path d="M4 15 24 5l20 10-20 10L4 15Z" fill="currentColor"/>
+					<path d="M12 20v11c7 7 17 7 24 0V20l-12 6-12-6Z" fill="currentColor" opacity=".78"/>
+					<path d="M43 17v13" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+					<circle cx="43" cy="33" r="2.5" fill="currentColor"/>
+				</svg>
+				<span>UniShikha<small>Learn · Build · Grow</small></span>
+			</a>
+			<nav class="side-nav" aria-label="Student navigation">
+				<a class="nav-link" th:href="@{/dashboard}"><span class="nav-icon">⌂</span>Dashboard</a>
+				<a class="nav-link" th:href="@{/mycourses}"><span class="nav-icon">▤</span>My Courses</a>
+				<a class="nav-link" th:href="@{/explore}"><span class="nav-icon">◎</span>Explore</a>
+				<a class="nav-link" th:href="@{/live-class}"><span class="nav-icon">▣</span>Live Classes</a>
+				<a class="nav-link" th:href="@{/assignments}"><span class="nav-icon">☷</span>Assignments</a>
+				<a class="nav-link" th:href="@{/quizzes}"><span class="nav-icon">☑</span>Quizzes</a>
+				<a class="nav-link active" th:href="@{/myprojects}"><span class="nav-icon">◇</span>Projects</a>
+				<a class="nav-link" href="#project-discussion"><span class="nav-icon">♧</span>Community</a>
+				<a class="nav-link" href="#project-list"><span class="nav-icon">♢</span>Certificates</a>
+				<a class="nav-link" th:href="@{/mycourses}"><span class="nav-icon">▤</span>Notes</a>
+				<a class="nav-link" href="#project-details"><span class="nav-icon">▦</span>Calendar</a>
+				<a class="nav-link" th:href="@{/login}"><span class="nav-icon">☏</span>Messages</a>
+			</nav>
+			<a class="nav-link logout-link" th:href="@{/login}"><span class="nav-icon">⇥</span>Log out</a>
+		</aside>
+
+		<main class="main-content">
+			<header class="topbar">
+				<button class="menu-button" type="button" aria-label="Scroll to project list" onclick="document.querySelector('#project-list').scrollIntoView({behavior:'smooth'})">☰</button>
+				<label class="search-box"><span aria-hidden="true">⌕</span><input id="project-search" type="search" placeholder="Search courses, projects, assignments..." aria-label="Search projects"></label>
+				<div class="topbar-actions">
+					<button class="notification-button" type="button" aria-label="View recent project activity" onclick="document.querySelector('#project-discussion').scrollIntoView({behavior:'smooth'})">♧<i></i></button>
+					<div class="profile-avatar">AH</div>
+					<strong class="profile-name">Arafat Hossain</strong>
+					<a class="profile-menu" th:href="@{/login}" aria-label="Profile and account settings">⌄</a>
+				</div>
+			</header>
+
+			<section class="page-intro">
+				<h1>My Projects</h1>
+				<p>View and submit projects from your enrolled courses.</p>
+			</section>
+
+			<div class="course-picker" role="group" aria-label="Filter projects by course">
+				<button class="course-card selected" type="button" data-course-filter="python">
+					<span class="course-icon python-icon">Py</span><span class="course-copy"><strong>Python for Beginners</strong><small>3 Projects</small></span>
+				</button>
+				<button class="course-card" type="button" data-course-filter="react">
+					<span class="course-icon react-icon">⚛</span><span class="course-copy"><strong>React Web Development</strong><small>2 Projects</small></span>
+				</button>
+				<button class="course-card" type="button" data-course-filter="flutter">
+					<span class="course-icon flutter-icon">◀</span><span class="course-copy"><strong>Flutter Mobile Application</strong><small>2 Projects</small></span>
+				</button>
+			</div>
+
+			<div class="workspace-grid">
+				<section class="project-list-column" id="project-list" aria-label="Course projects">
+					<div class="project-toolbar">
+						<div class="status-filters" role="tablist" aria-label="Filter projects by status">
+							<button class="status-filter active" type="button" role="tab" aria-selected="true" data-status-filter="all">All Projects <span>(3)</span></button>
+							<button class="status-filter" type="button" role="tab" aria-selected="false" data-status-filter="not-started">Not Started <span>(1)</span></button>
+							<button class="status-filter" type="button" role="tab" aria-selected="false" data-status-filter="in-progress">In Progress <span>(1)</span></button>
+							<button class="status-filter" type="button" role="tab" aria-selected="false" data-status-filter="submitted">Submitted <span>(1)</span></button>
+						</div>
+						<label class="mobile-search"><span aria-hidden="true">⌕</span><input id="list-search" type="search" placeholder="Find a project..." aria-label="Find a project"></label>
+					</div>
+
+					<div class="project-list">
+						<article class="project-card selected" data-project="student-management" data-course="python" data-status="in-progress" data-name="Student Management System">
+							<div class="project-icon python-icon">Py</div>
+							<div class="project-main">
+								<div class="project-title"><h2>Student Management System</h2><span class="type-tag individual-tag">Individual Project</span></div>
+								<p>Build a simple console-based Student Management System using Python. The system should support add, view, search and delete students.</p>
+								<div class="project-meta"><span>▦ &nbsp;Oct 30, 2026</span><span class="marks">♜ &nbsp;100 Marks</span><span>▥ &nbsp;Beginner</span></div>
+							</div>
+							<div class="project-progress"><span class="project-status status-progress">In Progress</span><div class="progress-line"><span style="width:60%"></span></div><small>60%</small><button class="project-action primary-action" type="button" data-select-project="student-management">Continue Work <span>→</span></button></div>
+						</article>
+						<article class="project-card" data-project="data-analysis" data-course="python" data-status="not-started" data-name="Data Analysis Report">
+							<div class="project-icon analytics-icon">▥</div>
+							<div class="project-main">
+								<div class="project-title"><h2>Data Analysis Report</h2><span class="type-tag group-tag">Group Project</span></div>
+								<p>Analyze a given dataset and create visualizations using Python. Submit a full report with insights.</p>
+								<div class="project-meta"><span>▦ &nbsp;Nov 15, 2026</span><span class="marks">♜ &nbsp;50 Marks</span><span>▥ &nbsp;Intermediate</span></div>
+							</div>
+							<div class="project-progress"><span class="project-status status-not-started">Not Started</span><div class="progress-line"><span style="width:0%"></span></div><small>0%</small><button class="project-action secondary-action" type="button" data-select-project="data-analysis">View Details</button></div>
+						</article>
+						<article class="project-card" data-project="mini-web-scraper" data-course="python" data-status="submitted" data-name="Mini Web Scraper">
+							<div class="project-icon web-icon">◎</div>
+							<div class="project-main">
+								<div class="project-title"><h2>Mini Web Scraper</h2><span class="type-tag individual-tag">Individual Project</span></div>
+								<p>Create a Python script to scrape data from a website and save it as a CSV file.</p>
+								<div class="project-meta"><span>▦ &nbsp;Dec 1, 2026</span><span class="marks">♜ &nbsp;75 Marks</span><span>▥ &nbsp;Beginner</span></div>
+							</div>
+							<div class="project-progress"><span class="project-status status-submitted">Submitted</span><div class="progress-line"><span style="width:100%"></span></div><small>100%</small><button class="project-action secondary-action" type="button" data-select-project="mini-web-scraper">View Submission</button></div>
+						</article>
+
+						<article class="project-card" data-project="react-dashboard" data-course="react" data-status="in-progress" data-name="Analytics Dashboard" hidden>
+							<div class="project-icon react-icon">⚛</div><div class="project-main"><div class="project-title"><h2>Analytics Dashboard</h2><span class="type-tag group-tag">Group Project</span></div><p>Create a responsive dashboard with reusable React components and charts.</p><div class="project-meta"><span>▦ &nbsp;Nov 8, 2026</span><span class="marks">♜ &nbsp;100 Marks</span><span>▥ &nbsp;Intermediate</span></div></div><div class="project-progress"><span class="project-status status-progress">In Progress</span><div class="progress-line"><span style="width:35%"></span></div><small>35%</small><button class="project-action primary-action" type="button" data-select-project="react-dashboard">Continue Work <span>→</span></button></div>
+						</article>
+						<article class="project-card" data-project="react-portfolio" data-course="react" data-status="not-started" data-name="Personal Portfolio" hidden>
+							<div class="project-icon web-icon">◎</div><div class="project-main"><div class="project-title"><h2>Personal Portfolio</h2><span class="type-tag individual-tag">Individual Project</span></div><p>Build and publish a personal portfolio website using React.</p><div class="project-meta"><span>▦ &nbsp;Nov 22, 2026</span><span class="marks">♜ &nbsp;75 Marks</span><span>▥ &nbsp;Beginner</span></div></div><div class="project-progress"><span class="project-status status-not-started">Not Started</span><div class="progress-line"><span style="width:0%"></span></div><small>0%</small><button class="project-action secondary-action" type="button" data-select-project="react-portfolio">View Details</button></div>
+						</article>
+						<article class="project-card" data-project="flutter-weather" data-course="flutter" data-status="in-progress" data-name="Weather App" hidden>
+							<div class="project-icon flutter-icon">◀</div><div class="project-main"><div class="project-title"><h2>Weather App</h2><span class="type-tag individual-tag">Individual Project</span></div><p>Create a mobile weather app with location search and a clean forecast view.</p><div class="project-meta"><span>▦ &nbsp;Nov 18, 2026</span><span class="marks">♜ &nbsp;100 Marks</span><span>▥ &nbsp;Intermediate</span></div></div><div class="project-progress"><span class="project-status status-progress">In Progress</span><div class="progress-line"><span style="width:20%"></span></div><small>20%</small><button class="project-action primary-action" type="button" data-select-project="flutter-weather">Continue Work <span>→</span></button></div>
+						</article>
+						<article class="project-card" data-project="flutter-task" data-course="flutter" data-status="not-started" data-name="Task Planner" hidden>
+							<div class="project-icon analytics-icon">☷</div><div class="project-main"><div class="project-title"><h2>Task Planner</h2><span class="type-tag individual-tag">Individual Project</span></div><p>Design a simple task planner with create, edit, and completion states.</p><div class="project-meta"><span>▦ &nbsp;Dec 2, 2026</span><span class="marks">♜ &nbsp;75 Marks</span><span>▥ &nbsp;Beginner</span></div></div><div class="project-progress"><span class="project-status status-not-started">Not Started</span><div class="progress-line"><span style="width:0%"></span></div><small>0%</small><button class="project-action secondary-action" type="button" data-select-project="flutter-task">View Details</button></div>
+						</article>
+						<p class="empty-state" id="empty-state" hidden>No projects match these filters.</p>
+					</div>
+				</section>
+
+				<aside class="detail-panel" id="project-details">
+					<header class="detail-header">
+						<div><h2 id="detail-title">Student Management System</h2><p id="detail-course">Python for Beginners</p></div>
+						<span class="project-status status-progress" id="detail-status">In Progress</span>
+					</header>
+					<nav class="detail-tabs" role="tablist" aria-label="Project details">
+						<button class="detail-tab active" type="button" role="tab" aria-selected="true" data-detail-tab="details">Details</button>
+						<button class="detail-tab" type="button" role="tab" aria-selected="false" data-detail-tab="instructions">Instructions</button>
+						<button class="detail-tab" type="button" role="tab" aria-selected="false" data-detail-tab="resources">Resources</button>
+						<button class="detail-tab" type="button" role="tab" aria-selected="false" data-detail-tab="submission">My Submission</button>
+						<button class="detail-tab" type="button" role="tab" aria-selected="false" data-detail-tab="discussion">Discussion</button>
+					</nav>
+
+					<section class="detail-section" id="detail-details" role="tabpanel">
+						<h3>Project Overview</h3>
+						<p id="detail-description">Build a simple console-based Student Management System using Python. The system should support add, view, search and delete students. Use file handling to store data permanently.</p>
+						<div class="detail-facts">
+							<div><span class="fact-icon">▦</span><span><small>Deadline</small><strong id="detail-deadline">Oct 30, 2026<br>11:59 PM</strong></span></div>
+							<div><span class="fact-icon marks">♜</span><span><small>Total Marks</small><strong id="detail-marks">100 Marks</strong></span></div>
+							<div><span class="fact-icon difficulty">▥</span><span><small>Difficulty Level</small><strong id="detail-level">Beginner</strong></span></div>
+							<div><span class="fact-icon">▤</span><span><small>Project Type</small><strong id="detail-type">Individual Project</strong></span></div>
+						</div>
+					</section>
+					<section class="detail-section" id="detail-instructions" role="tabpanel" hidden>
+						<h3>Project Instructions</h3>
+						<p id="instruction-copy">Create a Python program to manage student records. Include options to add a student, list all students, search by ID, and delete a record. Save records so they are available after restarting the program.</p>
+						<ul class="instruction-list"><li>Organize your code into clear functions.</li><li>Handle invalid input without crashing.</li><li>Include a short README explaining how to run your project.</li></ul>
+					</section>
+					<section class="detail-section resources-section" id="detail-resources" role="tabpanel" hidden>
+						<div class="resources-heading"><h3>Attachments</h3><button type="button" id="download-all">Download All</button></div>
+						<a class="resource-link" id="description-download" href="data:text/plain;charset=utf-8,Project%20description%20and%20requirements." download="Project_Description.txt"><span class="resource-file pdf-file">PDF</span><span><strong>Project_Description.pdf</strong><small>245 KB</small></span><b>↓</b></a>
+						<a class="resource-link" id="sample-download" href="data:text/plain;charset=utf-8,Sample%20output%20and%20starter%20notes." download="Sample_Output.txt"><span class="resource-file zip-file">ZIP</span><span><strong>Sample_Output.zip</strong><small>1.2 MB</small></span><b>↓</b></a>
+						<p class="resource-note">Sample materials are placeholders. Replace the download links with your own files.</p>
+					</section>
+					<section class="detail-section submission-section" id="detail-submission" role="tabpanel" hidden>
+						<h3>My Submission</h3>
+						<p id="submission-description">Your project files and notes will appear here after you select them below.</p>
+						<a class="inline-link" href="#submit-project">Go to project upload <span>↓</span></a>
+					</section>
+					<section class="detail-section discussion-section" id="detail-discussion" role="tabpanel" hidden>
+						<h3 id="project-discussion">Project Discussion</h3>
+						<div class="discussion-list" id="discussion-list" aria-live="polite">
+							<article class="discussion-message"><span class="discussion-avatar">TR</span><div><strong>Tanvir Rahman <small>Instructor · 10:30 AM</small></strong><p>Share your progress or ask a question about this project.</p></div></article>
+						</div>
+						<form class="discussion-form" id="discussion-form"><label class="sr-only" for="discussion-input">Write a message</label><input id="discussion-input" type="text" placeholder="Write a message..." required><button type="submit">Post</button></form>
+					</section>
+
+					<section class="upload-section" id="submit-project">
+						<h3>Submit Your Project</h3>
+						<label class="drop-zone" id="drop-zone" for="project-files">
+							<input id="project-files" type="file" accept=".pdf,.zip,.doc,.docx,.py,.txt,.csv,.js,.html,.css" multiple>
+							<span class="upload-symbol">⇧</span><strong>Drag and drop your files here</strong><span>or click to upload (PDF, ZIP, DOC, etc.)</span>
+						</label>
+						<div class="selected-files" id="selected-files" aria-live="polite"></div>
+						<button class="submit-button" id="submit-project-button" type="button">➤ &nbsp; Submit Project</button>
+						<p class="submit-feedback" id="submit-feedback" aria-live="polite"></p>
+					</section>
+				</aside>
+			</div>
+			<footer class="page-footer">© 2026 UniShikha <span>•</span> Learn together, grow together.</footer>
+		</main>
+	</div>
+
+	<script>
+		const projects = {
+			'student-management': { title: 'Student Management System', course: 'Python for Beginners', status: 'in-progress', description: 'Build a simple console-based Student Management System using Python. The system should support add, view, search and delete students. Use file handling to store data permanently.', deadline: 'Oct 30, 2026<br>11:59 PM', marks: '100 Marks', level: 'Beginner', type: 'Individual Project', instructions: 'Create a Python program to manage student records. Include options to add a student, list all students, search by ID, and delete a record. Save records so they are available after restarting the program.' },
+			'data-analysis': { title: 'Data Analysis Report', course: 'Python for Beginners', status: 'not-started', description: 'Analyze a dataset using Python, create clear visualizations, and submit a report that explains your findings.', deadline: 'Nov 15, 2026<br>11:59 PM', marks: '50 Marks', level: 'Intermediate', type: 'Group Project', instructions: 'Explore the provided data, explain your cleaning steps, create at least two visualizations, and summarize the findings in a report.' },
+			'mini-web-scraper': { title: 'Mini Web Scraper', course: 'Python for Beginners', status: 'submitted', description: 'Create a Python script to scrape data from a website and save it as a CSV file.', deadline: 'Dec 1, 2026<br>11:59 PM', marks: '75 Marks', level: 'Beginner', type: 'Individual Project', instructions: 'Write a small Python scraper, document the source and fields collected, and provide a CSV output with your submission.' },
+			'react-dashboard': { title: 'Analytics Dashboard', course: 'React Web Development', status: 'in-progress', description: 'Create a responsive analytics dashboard with reusable React components and charts.', deadline: 'Nov 8, 2026<br>11:59 PM', marks: '100 Marks', level: 'Intermediate', type: 'Group Project', instructions: 'Build an accessible dashboard layout using reusable React components, responsive styles, and clear chart labels.' },
+			'react-portfolio': { title: 'Personal Portfolio', course: 'React Web Development', status: 'not-started', description: 'Build and publish a personal portfolio website using React.', deadline: 'Nov 22, 2026<br>11:59 PM', marks: '75 Marks', level: 'Beginner', type: 'Individual Project', instructions: 'Create a responsive portfolio with an introduction, project gallery, and contact section using reusable components.' },
+			'flutter-weather': { title: 'Weather App', course: 'Flutter Mobile Application', status: 'in-progress', description: 'Create a mobile weather app with location search and a clear forecast view.', deadline: 'Nov 18, 2026<br>11:59 PM', marks: '100 Marks', level: 'Intermediate', type: 'Individual Project', instructions: 'Design a mobile weather experience with a location search, current conditions, and a multi-day forecast.' },
+			'flutter-task': { title: 'Task Planner', course: 'Flutter Mobile Application', status: 'not-started', description: 'Design a simple task planner with create, edit, and completion states.', deadline: 'Dec 2, 2026<br>11:59 PM', marks: '75 Marks', level: 'Beginner', type: 'Individual Project', instructions: 'Build a task list where users can add, edit, complete, and remove tasks with clear empty and completed states.' }
+		};
+
+		let activeCourse = 'python';
+		let activeStatus = 'all';
+		let selectedProject = 'student-management';
+		let uploadedFiles = [];
+		const projectCards = Array.from(document.querySelectorAll('.project-card'));
+		const searchInputs = [document.querySelector('#project-search'), document.querySelector('#list-search')];
+
+		function renderProjectList() {
+			const query = searchInputs.map((input) => input.value.trim().toLowerCase()).find(Boolean) || '';
+			let visibleCount = 0;
+			projectCards.forEach((card) => {
+				const visible = card.dataset.course === activeCourse
+					&& (activeStatus === 'all' || card.dataset.status === activeStatus)
+					&& (!query || card.dataset.name.toLowerCase().includes(query) || card.textContent.toLowerCase().includes(query));
+				card.hidden = !visible;
+				if (visible) visibleCount++;
+			});
+			document.querySelector('#empty-state').hidden = visibleCount > 0;
+		}
+
+		function selectProject(projectId) {
+			const project = projects[projectId];
+			if (!project) return;
+			selectedProject = projectId;
+			projectCards.forEach((card) => card.classList.toggle('selected', card.dataset.project === projectId));
+			document.querySelector('#detail-title').textContent = project.title;
+			document.querySelector('#detail-course').textContent = project.course;
+			document.querySelector('#detail-description').textContent = project.description;
+			document.querySelector('#instruction-copy').textContent = project.instructions;
+			document.querySelector('#detail-deadline').innerHTML = project.deadline;
+			document.querySelector('#detail-marks').textContent = project.marks;
+			document.querySelector('#detail-level').textContent = project.level;
+			document.querySelector('#detail-type').textContent = project.type;
+			const status = document.querySelector('#detail-status');
+			status.className = `project-status status-${project.status}`;
+			status.textContent = project.status === 'in-progress' ? 'In Progress' : project.status === 'submitted' ? 'Submitted' : 'Not Started';
+			document.querySelector('#submission-description').textContent = project.status === 'submitted'
+				? 'This project is marked as submitted. Connect your submission records to show uploaded files here.'
+				: 'Your project files and notes will appear here after you select them below.';
+			document.querySelector('#project-details').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+		}
+
+		document.querySelectorAll('[data-course-filter]').forEach((button) => button.addEventListener('click', () => {
+			activeCourse = button.dataset.courseFilter;
+			document.querySelectorAll('[data-course-filter]').forEach((item) => item.classList.toggle('selected', item === button));
+			const firstVisible = projectCards.find((card) => card.dataset.course === activeCourse);
+			if (firstVisible) selectProject(firstVisible.dataset.project);
+			renderProjectList();
+		}));
+		document.querySelectorAll('.status-filter').forEach((button) => button.addEventListener('click', () => {
+			activeStatus = button.dataset.statusFilter;
+			document.querySelectorAll('.status-filter').forEach((item) => {
+				const active = item === button;
+				item.classList.toggle('active', active);
+				item.setAttribute('aria-selected', String(active));
+			});
+			renderProjectList();
+		}));
+		searchInputs.forEach((input) => input.addEventListener('input', () => {
+			searchInputs.forEach((other) => { if (other !== input) other.value = input.value; });
+			renderProjectList();
+		}));
+		document.querySelectorAll('[data-select-project]').forEach((button) => button.addEventListener('click', () => selectProject(button.dataset.selectProject)));
+		projectCards.forEach((card) => card.addEventListener('click', (event) => {
+			if (!event.target.closest('button')) selectProject(card.dataset.project);
+		}));
+
+		document.querySelectorAll('[data-detail-tab]').forEach((button) => button.addEventListener('click', () => {
+			document.querySelectorAll('[data-detail-tab]').forEach((tab) => {
+				const active = tab === button;
+				tab.classList.toggle('active', active);
+				tab.setAttribute('aria-selected', String(active));
+			});
+			document.querySelectorAll('[id^="detail-"][role="tabpanel"]').forEach((panel) => { panel.hidden = panel.id !== `detail-${button.dataset.detailTab}`; });
+		}));
+		document.querySelector('a[href="#project-discussion"]').addEventListener('click', (event) => {
+			event.preventDefault();
+			document.querySelector('[data-detail-tab="discussion"]').click();
+			document.querySelector('#project-details').scrollIntoView({ behavior: 'smooth', block: 'start' });
+		});
+
+		const fileInput = document.querySelector('#project-files');
+		const dropZone = document.querySelector('#drop-zone');
+		const fileOutput = document.querySelector('#selected-files');
+		const submitFeedback = document.querySelector('#submit-feedback');
+		function renderFiles() {
+			fileOutput.replaceChildren();
+			uploadedFiles.forEach((file, index) => {
+				const row = document.createElement('div');
+				row.className = 'uploaded-file';
+				const name = document.createElement('span');
+				name.textContent = `${file.name} · ${file.size < 1048576 ? `${Math.max(1, Math.round(file.size / 1024))} KB` : `${(file.size / 1048576).toFixed(1)} MB`}`;
+				const remove = document.createElement('button');
+				remove.type = 'button';
+				remove.textContent = '×';
+				remove.setAttribute('aria-label', `Remove ${file.name}`);
+				remove.addEventListener('click', () => { uploadedFiles.splice(index, 1); renderFiles(); });
+				row.append(name, remove);
+				fileOutput.append(row);
+			});
+		}
+		function addFiles(files) {
+			const extensions = ['pdf', 'zip', 'doc', 'docx', 'py', 'txt', 'csv', 'js', 'html', 'css'];
+			const invalidFiles = [];
+			Array.from(files).forEach((file) => {
+				const extension = file.name.split('.').pop().toLowerCase();
+				if (!extensions.includes(extension) || file.size > 50 * 1024 * 1024) invalidFiles.push(file.name);
+				else uploadedFiles.push(file);
+			});
+			renderFiles();
+			submitFeedback.textContent = invalidFiles.length ? `Unsupported file or over 50 MB: ${invalidFiles.join(', ')}` : '';
+		}
+		fileInput.addEventListener('change', () => addFiles(fileInput.files));
+		['dragenter', 'dragover'].forEach((eventName) => dropZone.addEventListener(eventName, (event) => {
+			event.preventDefault();
+			dropZone.classList.add('drag-over');
+		}));
+		['dragleave', 'drop'].forEach((eventName) => dropZone.addEventListener(eventName, (event) => {
+			event.preventDefault();
+			dropZone.classList.remove('drag-over');
+		}));
+		dropZone.addEventListener('drop', (event) => addFiles(event.dataTransfer.files));
+		document.querySelector('#submit-project-button').addEventListener('click', () => {
+			submitFeedback.textContent = uploadedFiles.length
+				? `${uploadedFiles.length} file(s) ready. Connect a backend to submit them.`
+				: 'Select at least one project file before submitting.';
+			submitFeedback.classList.toggle('success', uploadedFiles.length > 0);
+		});
+
+		document.querySelector('#download-all').addEventListener('click', () => {
+			['description-download', 'sample-download'].forEach((id, index) => {
+				window.setTimeout(() => document.getElementById(id).click(), index * 250);
+			});
+		});
+		document.querySelector('#discussion-form').addEventListener('submit', (event) => {
+			event.preventDefault();
+			const input = document.querySelector('#discussion-input');
+			const messageText = input.value.trim();
+			if (!messageText) return;
+			const message = document.createElement('article');
+			message.className = 'discussion-message own-message';
+			const avatar = document.createElement('span');
+			avatar.className = 'discussion-avatar';
+			avatar.textContent = 'AH';
+			const content = document.createElement('div');
+			const author = document.createElement('strong');
+			author.textContent = 'You';
+			const text = document.createElement('p');
+			text.textContent = messageText;
+			content.append(author, text);
+			message.append(avatar, content);
+			document.querySelector('#discussion-list').append(message);
+			input.value = '';
+		});
+		renderProjectList();
+	</script>
+</body>
+</html>
