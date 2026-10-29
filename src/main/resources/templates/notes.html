@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#07182a">
+	<meta name="description" content="Organize and manage your UniShikha study notes.">
+	<title>My Notes | UniShikha</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" th:href="@{/css/notes.css}">
+</head>
+<body>
+	<div class="app-shell">
+		<aside class="sidebar" id="sidebar">
+			<a class="brand" th:href="@{/dashboard}" aria-label="UniShikha dashboard">
+				<svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+					<path d="M4 15 24 5l20 10-20 10L4 15Z" fill="currentColor"/>
+					<path d="M12 20v11c7 7 17 7 24 0V20l-12 6-12-6Z" fill="currentColor" opacity=".78"/>
+					<path d="M43 17v13" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+					<circle cx="43" cy="33" r="2.5" fill="currentColor"/>
+				</svg>
+				<span class="brand-copy">UniShikha<small>Learn · Build · Grow</small></span>
+			</a>
+
+			<nav class="side-nav" aria-label="Student navigation">
+				<a class="side-link" th:href="@{/dashboard}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg>Dashboard</a>
+				<a class="side-link" th:href="@{/my-courses}"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 3v4m8-4v4M4 10h16"/></svg>My Courses</a>
+				<a class="side-link" th:href="@{/explore}"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.8 8.2-2.2 5.4-5.4 2.2 2.2-5.4z"/></svg>Explore</a>
+				<a class="side-link" th:href="@{/live-class}"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m10 9 5 3-5 3z"/></svg>Live Classes</a>
+				<a class="side-link" th:href="@{/assignments}"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6m-6 4h6m-6 4h4"/></svg>Assignments</a>
+				<a class="side-link" th:href="@{/quizzes}"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="m8 12 3 3 5-6"/></svg>Quizzes</a>
+				<a class="side-link" th:href="@{/projects}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18m0-18 7 4v5l-7 4-7-4V7z"/><path d="m8 16-3 2v3h14v-3l-3-2"/></svg>Projects</a>
+				<a class="side-link" th:href="@{/communities}"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20v-1a6 6 0 0 1 12 0v1m2-15a3 3 0 0 1 0 6m1 3a5 5 0 0 1 3 5"/></svg>Community</a>
+				<a class="side-link" th:href="@{/certificates}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.5 2 3.2-.1.9 3.1 2.5 2-1.2 3 .5 3.2-2.9 1.4-1.7 2.7-3.1-.8-3.1.8-1.7-2.7L5 16.2l.5-3.2-1.2-3 2.5-2 .9-3.1 3.2.1z"/><path d="m9 12 2 2 4-4"/></svg>Certificates</a>
+				<a class="side-link active" th:href="@{/notes}" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5l-3 2V6a2 2 0 0 1 2-2z"/><path d="M8 9h8m-8 4h6"/></svg>Notes</a>
+				<a class="side-link" id="calendar" href="#calendar"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18m-13 4h2m4 0h2m-8 3h2"/></svg>Calendar</a>
+				<a class="side-link" id="messages" href="#messages"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>Messages</a>
+			</nav>
+			<div class="sidebar-footer">
+				<a class="side-link" th:href="@{/home}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zM8 9h8m-8 4h8"/></svg>Visit homepage</a>
+			</div>
+		</aside>
+
+		<main class="main-column">
+			<header class="topbar">
+				<button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="sidebar" aria-expanded="false">
+					<span></span><span></span><span></span>
+				</button>
+				<label class="global-search">
+					<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16 16 4 4"/></svg>
+					<input type="search" placeholder="Search your notes, topics, or keywords..." aria-label="Search notes">
+					<kbd>Ctrl + K</kbd>
+				</label>
+				<div class="topbar-actions">
+					<a class="notification-link" href="#recent-notes" aria-label="View recent notes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9m-8 12h4"/></svg><i></i></a>
+					<a class="profile-link" th:href="@{/login}" aria-label="Arafat Hossain profile">
+						<span class="profile-avatar">AH</span><strong>Arafat Hossain</strong><span class="chevron">⌄</span>
+					</a>
+				</div>
+			</header>
+
+			<div class="page-content">
+				<section class="page-heading">
+					<div>
+						<p class="eyebrow">YOUR PERSONAL LEARNING SPACE</p>
+						<h1>My Notes</h1>
+						<p class="page-subtitle">Take, organize and manage your study notes. Keep everything in one place.</p>
+					</div>
+					<a class="primary-button" href="#note-content"><span aria-hidden="true">＋</span> New Note</a>
+				</section>
+
+				<div class="notes-layout">
+					<aside class="library-column" aria-label="Notes library">
+						<section class="panel library-panel" id="all-notes">
+							<div class="library-search-row">
+								<label class="library-search">
+									<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16 16 4 4"/></svg>
+									<input type="search" placeholder="Search notes..." aria-label="Filter notes">
+								</label>
+								<a class="square-button" href="#all-notes" aria-label="Show all notes">☷</a>
+							</div>
+							<nav class="collection-nav" aria-label="Note collections">
+								<a class="collection-link selected" href="#all-notes"><span class="collection-icon">▣</span>All Notes <span class="count">24</span></a>
+								<a class="collection-link" href="#course-notes"><span class="collection-icon">▤</span>Course Notes <span class="count">12</span></a>
+								<a class="collection-link" id="personal-notes" href="#personal-notes"><span class="collection-icon">◉</span>Personal Notes <span class="count">6</span></a>
+								<a class="collection-link" id="bookmarks" href="#bookmarks"><span class="collection-icon">♧</span>Bookmarks <span class="count">3</span></a>
+								<a class="collection-link" id="shared-notes" href="#shared-notes"><span class="collection-icon">♧</span>Shared Notes <span class="count">2</span></a>
+								<a class="collection-link" id="trash" href="#trash"><span class="collection-icon">▤</span>Trash <span class="count">0</span></a>
+							</nav>
+						</section>
+
+						<section class="panel folders-panel" id="course-notes">
+							<div class="panel-heading"><h2>Folders</h2><a href="#note-content" aria-label="Add a folder">＋</a></div>
+							<nav class="folder-list" aria-label="Note folders">
+								<a href="#python-functions" class="folder-link"><span class="folder-dot blue"></span>Python<span class="count">8</span></a>
+								<a href="#web-development" class="folder-link"><span class="folder-dot violet"></span>Web Development<span class="count">5</span></a>
+								<a href="#flutter" class="folder-link"><span class="folder-dot green"></span>Flutter<span class="count">4</span></a>
+								<a href="#dsa" class="folder-link"><span class="folder-dot yellow"></span>DSA<span class="count">3</span></a>
+								<a href="#database" class="folder-link"><span class="folder-dot red"></span>Database<span class="count">2</span></a>
+								<a href="#personal-notes" class="folder-link"><span class="folder-dot gray"></span>Personal<span class="count">2</span></a>
+							</nav>
+						</section>
+
+						<section class="panel recent-panel" id="recent-notes">
+							<div class="panel-heading"><h2>Recent Notes</h2><a href="#all-notes">View all</a></div>
+							<a class="recent-note current" href="#python-functions">
+								<span class="document-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6m-10 4h6m-6 4h6"/></svg></span>
+								<span><strong>Python - Functions</strong><small>Oct 25, 2026</small></span>
+							</a>
+							<a class="recent-note" href="#list-comprehension">
+								<span class="document-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6m-10 4h6m-6 4h6"/></svg></span>
+								<span><strong>List Comprehension</strong><small>Oct 24, 2026</small></span>
+							</a>
+							<a class="recent-note" href="#file-handling">
+								<span class="document-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6m-10 4h6m-6 4h6"/></svg></span>
+								<span><strong>File Handling</strong><small>Oct 22, 2026</small></span>
+							</a>
+						</section>
+					</aside>
+
+					<article class="panel note-panel" id="note-content">
+						<div class="breadcrumbs"><a href="#course-notes"><span class="folder-mini">■</span> Python</a><span>›</span><a href="#python-functions">Python - Functions</a></div>
+						<div class="note-title-row">
+							<h2 id="python-functions">Python - Functions</h2>
+							<div class="note-actions">
+								<a class="action-button favorite" href="#bookmarks" aria-label="Add note to bookmarks" title="Add to bookmarks">☆</a>
+								<a class="action-button" href="#shared-notes"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m9 11 6-5m-6 7 6 5"/></svg><span>Share</span></a>
+								<a class="action-button" href="#note-content"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5 4 4M4 20l4-.8L19 8a2.8 2.8 0 0 0-4-4L4 15z"/></svg><span>Edit</span></a>
+								<a class="action-button more-button" href="#note-content" aria-label="More note actions">⋮</a>
+							</div>
+						</div>
+						<div class="note-meta">
+							<span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18"/></svg>Oct 25, 2026</span>
+							<span>10:30 AM</span>
+							<a class="tag" href="#course-notes"><span>◆</span> Python for Beginners</a>
+							<a class="add-tag" href="#course-notes">＋ Add Tag</a>
+						</div>
+
+						<div class="note-body">
+							<section class="note-section" id="what-is-a-function">
+								<h3 class="section-heading blue-heading"><span>1.</span> What is a Function?</h3>
+								<ul class="bullet-list">
+									<li>A function is a block of code that performs a specific task.</li>
+									<li>It helps us to reuse code and make the program organized.</li>
+									<li>We can define a function using the <code>def</code> keyword.</li>
+								</ul>
+								<div class="code-card">
+									<div class="code-toolbar"><span>Python</span><a href="#what-is-a-function" aria-label="Copy code">▢</a><a href="#what-is-a-function" aria-label="Expand code">⛶</a></div>
+									<pre><code><span class="line-number">1</span>  <span class="code-purple">def</span> <span class="code-yellow">greet</span>():
+<span class="line-number">2</span>      <span class="code-green">print</span>(<span class="code-string">"Hello, UniShikha!"</span>)
+<span class="line-number">3</span>
+<span class="line-number">4</span>  greet()  <span class="code-comment"># function call</span></code></pre>
+								</div>
+							</section>
+
+							<section class="note-section" id="parameters">
+								<h3 class="section-heading green-heading"><span>2.</span> Function with Parameters</h3>
+								<ul class="bullet-list green-bullets"><li>We can pass values to a function using parameters.</li></ul>
+								<div class="code-card">
+									<div class="code-toolbar"><span>Python</span><a href="#parameters" aria-label="Copy code">▢</a><a href="#parameters" aria-label="Expand code">⛶</a></div>
+									<pre><code><span class="line-number">1</span>  <span class="code-purple">def</span> <span class="code-yellow">add</span>(a, b):
+<span class="line-number">2</span>      <span class="code-purple">return</span> a + b
+<span class="line-number">3</span>
+<span class="line-number">4</span>  result = <span class="code-yellow">add</span>(5, 3)
+<span class="line-number">5</span>  <span class="code-green">print</span>(result)  <span class="code-comment"># Output: 8</span></code></pre>
+								</div>
+							</section>
+
+							<section class="note-section" id="return-value">
+								<h3 class="section-heading violet-heading"><span>3.</span> Return Value</h3>
+								<ul class="bullet-list violet-bullets">
+									<li>A function can return a value using the <code>return</code> statement.</li>
+									<li>If we don’t use <code>return</code>, the function returns <code>None</code> by default.</li>
+								</ul>
+							</section>
+
+							<section class="note-section" id="types-of-functions">
+								<h3 class="section-heading yellow-heading"><span>4.</span> Types of Functions</h3>
+								<ul class="bullet-list"><li>Built-in, user-defined, anonymous (lambda), and recursive functions.</li></ul>
+							</section>
+
+							<section class="note-section" id="example-programs">
+								<h3 class="section-heading pink-heading"><span>5.</span> Example Programs</h3>
+								<p class="plain-note">Create a function, pass arguments, and use its return value wherever you need it.</p>
+							</section>
+
+							<section class="related-content" id="related-notes">
+								<h3>Related note sections</h3>
+								<div class="related-anchor-grid">
+									<a id="python-variables" href="#note-content">Python - Variables <span>↗</span></a>
+									<a id="python-loops" href="#note-content">Python - Loops <span>↗</span></a>
+									<a id="python-list" href="#note-content">Python - List <span>↗</span></a>
+									<a id="web-development" href="#note-content">Web Development notes <span>↗</span></a>
+									<a id="flutter" href="#note-content">Flutter notes <span>↗</span></a>
+									<a id="dsa" href="#note-content">DSA notes <span>↗</span></a>
+									<a id="database" href="#note-content">Database notes <span>↗</span></a>
+									<a id="list-comprehension" href="#note-content">List Comprehension <span>↗</span></a>
+									<a id="file-handling" href="#note-content">File Handling <span>↗</span></a>
+								</div>
+							</section>
+						</div>
+					</article>
+
+					<aside class="tools-column" aria-label="Note tools and related notes">
+						<section class="panel tools-panel">
+							<h2>Note Tools</h2>
+							<div class="tools-grid">
+								<a class="tool-link" href="#note-content"><span>Ｔ</span>Rich Text</a>
+								<a class="tool-link" href="#what-is-a-function"><span>‹/›</span>Code Block</a>
+								<a class="tool-link" href="#note-content"><span>▧</span>Image</a>
+								<a class="tool-link" href="#note-content"><span>↗</span>File Attach</a>
+								<a class="tool-link" href="#note-content"><span>🔗</span>Link</a>
+								<a class="tool-link" href="#note-content"><span>☑</span>Checklist</a>
+								<a class="tool-link" href="#note-content"><span>▦</span>Table</a>
+								<a class="tool-link" href="#note-content"><span>∑</span>Math (LaTeX)</a>
+							</div>
+						</section>
+
+						<section class="panel toc-panel">
+							<h2>Table of Contents</h2>
+							<nav aria-label="Table of contents">
+								<a class="toc-link active" href="#what-is-a-function">1. What is a Function?</a>
+								<a class="toc-link" href="#parameters">2. Function with Parameters</a>
+								<a class="toc-link" href="#return-value">3. Return Value</a>
+								<a class="toc-link" href="#types-of-functions">4. Types of Functions</a>
+								<a class="toc-link" href="#example-programs">5. Example Programs</a>
+								<a class="add-section" href="#note-content">＋ Add Section</a>
+							</nav>
+						</section>
+
+						<section class="panel related-panel">
+							<div class="panel-heading"><h2>Related Notes</h2><a href="#related-notes">View All</a></div>
+							<a class="related-note" href="#python-variables"><span class="document-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6m-10 4h6m-6 4h6"/></svg></span><span><strong>Python - Variables</strong><small>Oct 20, 2026</small></span><b>⋮</b></a>
+							<a class="related-note" href="#python-loops"><span class="document-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6m-10 4h6m-6 4h6"/></svg></span><span><strong>Python - Loops</strong><small>Oct 18, 2026</small></span><b>⋮</b></a>
+							<a class="related-note" href="#python-list"><span class="document-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6m-10 4h6m-6 4h6"/></svg></span><span><strong>Python - List</strong><small>Oct 15, 2026</small></span><b>⋮</b></a>
+						</section>
+					</aside>
+				</div>
+			</div>
+		</main>
+	</div>
+
+	<script>
+		const menuToggle = document.querySelector('.menu-toggle');
+		const sidebar = document.querySelector('.sidebar');
+
+		menuToggle.addEventListener('click', () => {
+			const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+			menuToggle.setAttribute('aria-expanded', String(!isOpen));
+			sidebar.classList.toggle('is-open', !isOpen);
+		});
+
+		sidebar.addEventListener('click', (event) => {
+			if (event.target.closest('a')) {
+				menuToggle.setAttribute('aria-expanded', 'false');
+				sidebar.classList.remove('is-open');
+			}
+		});
+
+		const searchInputs = document.querySelectorAll('input[type="search"]');
+		const searchableNotes = document.querySelectorAll('.recent-note, .related-note, .folder-link');
+
+		searchInputs.forEach((input) => {
+			input.addEventListener('input', () => {
+				const query = input.value.trim().toLowerCase();
+				searchableNotes.forEach((note) => {
+					note.hidden = query.length > 0 && !note.textContent.toLowerCase().includes(query);
+				});
+			});
+		});
+	</script>
+</body>
+</html>
