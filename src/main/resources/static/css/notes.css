@@ -1089,7 +1089,7 @@ kbd {
 	}
 }
 
-@media (max-width: 720px) {
+@media (max-width: 760px) {
 	.sidebar {
 		width: 230px;
 		transform: translateX(-100%);

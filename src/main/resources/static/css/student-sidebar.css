@@ -1,6 +1,18 @@
 :root {
 	--student-sidebar-width: 180px;
 	--student-sidebar-compact-width: 155px;
+	--student-page-content-width: 1740px;
+	--student-shell-width: 1920px;
+}
+
+.app-shell,
+.app-layout,
+.courses-shell,
+.dashboard-shell,
+.notes-shell {
+	width: min(var(--student-shell-width), 100%);
+	max-width: var(--student-shell-width);
+	margin-inline: auto;
 }
 
 @media (min-width: 761px) {
@@ -10,11 +22,20 @@
 		grid-template-columns: var(--student-sidebar-width) minmax(0, 1fr);
 	}
 
-	.dashboard-shell {
-		grid-template-columns: var(--student-sidebar-width) minmax(490px, 1fr) 250px;
+	.dashboard-shell:not(.courses-shell) {
+		grid-template-columns: var(--student-sidebar-width) minmax(0, 1fr) 250px;
+		padding: 0;
+	}
+
+	.dashboard-shell.courses-shell {
+		grid-template-columns: var(--student-sidebar-width) minmax(0, 1fr);
 	}
 
 	.notes-shell .sidebar {
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: max(0px, calc((100vw - var(--student-shell-width)) / 2));
 		width: var(--student-sidebar-width);
 	}
 
@@ -22,8 +43,20 @@
 		margin-left: var(--student-sidebar-width);
 	}
 
-	.sidebar {
+	.sidebar,
+	.courses-shell .sidebar,
+	.dashboard-shell .sidebar {
+		position: sticky;
+		top: 0;
+		height: 100vh;
+		min-height: 100vh;
+		overflow-y: auto;
 		padding: 14px 9px 13px;
+		border: 0;
+		border-radius: 0;
+		background: linear-gradient(160deg, #102035, #081421 85%);
+		box-shadow: none;
+		color: #eaf0fb;
 	}
 
 	.sidebar > .brand {
@@ -44,7 +77,9 @@
 	}
 
 	.sidebar .side-nav {
+		display: grid;
 		gap: 3px;
+		padding: 0;
 	}
 
 	.sidebar .side-link,
@@ -55,6 +90,7 @@
 		gap: 10px;
 		padding: 7px 9px;
 		border-radius: 8px;
+		color: #d7dfed;
 		font-size: 11px;
 	}
 
@@ -69,10 +105,36 @@
 		line-height: 1;
 	}
 
+	.sidebar .side-link:hover,
+	.sidebar .nav-link:hover {
+		background: #ffffff17;
+		color: #fff;
+	}
+
+	.sidebar .side-link.active,
+	.sidebar .nav-link.active {
+		background: linear-gradient(110deg, #0879f9, #1470ea);
+		box-shadow: 0 6px 16px #0576f533;
+		color: #fff;
+	}
+
 	.sidebar .side-link svg {
 		width: 16px;
 		height: 16px;
 		flex: 0 0 16px;
+	}
+
+	.dashboard-shell .brand > span > span {
+		color: inherit;
+	}
+
+	.app-shell > .main-content,
+	.app-layout > .main-content {
+		width: min(var(--student-page-content-width), 100%);
+		min-width: 0;
+		margin: 0 auto;
+		padding-right: 16px;
+		padding-left: 16px;
 	}
 }
 
@@ -83,8 +145,12 @@
 		grid-template-columns: var(--student-sidebar-compact-width) minmax(0, 1fr);
 	}
 
-	.dashboard-shell {
+	.dashboard-shell:not(.courses-shell) {
 		grid-template-columns: var(--student-sidebar-compact-width) minmax(430px, 1fr) 230px;
+	}
+
+	.dashboard-shell.courses-shell {
+		grid-template-columns: var(--student-sidebar-compact-width) minmax(0, 1fr);
 	}
 
 	.notes-shell .sidebar {
@@ -97,7 +163,52 @@
 }
 
 @media (min-width: 761px) and (max-width: 1080px) {
-	.dashboard-shell {
+	.dashboard-shell:not(.courses-shell),
+	.dashboard-shell.courses-shell {
 		grid-template-columns: var(--student-sidebar-compact-width) minmax(0, 1fr);
+	}
+}
+
+@media (max-width: 760px) {
+	.app-shell:not(.notes-shell) {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.app-shell:not(.notes-shell) > .sidebar {
+		position: static;
+		width: auto;
+		min-width: 0;
+		height: auto;
+		min-height: 0;
+		overflow: visible;
+		padding: 10px 13px;
+	}
+
+	.app-shell:not(.notes-shell) .brand {
+		margin: 0;
+	}
+
+	.app-shell:not(.notes-shell) .side-nav {
+		display: flex;
+		min-width: 0;
+		gap: 4px;
+		overflow-x: auto;
+		margin-top: 9px;
+		padding: 0 0 2px;
+	}
+
+	.app-shell:not(.notes-shell) .nav-link {
+		flex: 0 0 auto;
+		min-height: 32px;
+		padding: 6px 8px;
+		font-size: 9px;
+	}
+
+	.app-shell:not(.notes-shell) .nav-icon {
+		font-size: 14px;
+	}
+
+	.app-shell:not(.notes-shell) .logout-link {
+		display: none;
 	}
 }
